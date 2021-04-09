@@ -30,6 +30,6 @@ singularity exec --nv \
 /bin/bash -c "
 source /ext3/env.sh
 conda activate dev
-python train_classifier.py --checkpoint_dir checkpoints/ --encoder_checkpoint checkpoints/encoder.pth
+python train_classifier.py --checkpoint_dir checkpoints/ --encoder_checkpoint checkpoints/encoder_small_3ep_relu.pth
 python eval.py --checkpoint-path checkpoints/net_classifier.pth
 "
