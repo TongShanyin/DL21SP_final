@@ -12,7 +12,7 @@ import torch.nn.functional as F
 from torchvision import datasets, transforms, models
 
 from dataloader import CustomDataset
-from autoencoder import Encoder, Decoder, EncoderSmall, DecoderSmall, train_transforms
+from autoencoder_tightrope import Encoder, Decoder, train_transforms
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--checkpoint-dir', type=str)
@@ -21,20 +21,29 @@ args = parser.parse_args()
 trainset = CustomDataset(root='/dataset', split="unlabeled", transform=train_transforms)
 trainloader = torch.utils.data.DataLoader(trainset, batch_size=256, shuffle=True, num_workers=2)
 
-encoder = EncoderSmall()
-decoder = DecoderSmall()
-net = nn.Sequential(encoder, decoder).cuda()
+encoder = Encoder()
+decoder = Decoder()
+net = nn.Sequential(encoder, decoder)
+#net = torch.nn.DataParallel(net)
+net = net.cuda()
 
 criterion = nn.MSELoss()
-optimizer = torch.optim.Adam(net.parameters(), lr=0.1)
+optimizer = torch.optim.Adam(net.parameters(), lr=0.01)
 
 print('Start Training')
 tic = time.perf_counter()
 
 net.train()
-for epoch in range(3):
+steps = 0
+for epoch in range(1):
     running_loss = 0.0
+    #if steps >= 500:
+    #    break
     for i, data in enumerate(trainloader):
+        #steps += 1
+        #if steps >= 500:
+        #    break
+
         # get the inputs; data is a list of [inputs, labels]
         inputs, labels = data
         inputs, labels = inputs.cuda(), labels.cuda()
@@ -57,6 +66,6 @@ toc = time.perf_counter()
 print('Time elapsed: ' + str(toc - tic))
 
 os.makedirs(args.checkpoint_dir, exist_ok=True)
-torch.save(encoder.state_dict(), os.path.join(args.checkpoint_dir, "encoder_small_3ep_relu.pth"))
+torch.save(encoder.state_dict(), os.path.join(args.checkpoint_dir, "tightrope_encoder_ep.pth"))
 
-print(f"Saved checkpoint to {os.path.join(args.checkpoint_dir, 'encoder_small_3ep_relu.pth')}")
+print(f"Saved checkpoint to {os.path.join(args.checkpoint_dir, 'tightrope_encoder_ep.pth')}")

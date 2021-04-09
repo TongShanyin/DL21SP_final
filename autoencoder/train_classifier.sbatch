@@ -3,7 +3,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --partition=n1s8-t4-1
 #SBATCH --account=dl06
-#SBATCH --time=01:00:00
+#SBATCH --time=02:00:00
 #SBATCH --output=logs/demo_%j.out
 #SBATCH --error=logs/demo_%j.err
 #SBATCH --exclusive
@@ -30,6 +30,6 @@ singularity exec --nv \
 /bin/bash -c "
 source /ext3/env.sh
 conda activate dev
-python train_classifier.py --checkpoint_dir checkpoints/ --encoder_checkpoint checkpoints/encoder.pth
+python train_classifier.py --checkpoint_dir checkpoints/ --encoder_checkpoint checkpoints/tightrope_encoder_3ep.pth
 python eval.py --checkpoint-path checkpoints/net_classifier.pth
 "
