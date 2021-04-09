@@ -2,6 +2,7 @@
 
 import torch
 from torch import nn
+from torch.nn import functional as F
 
 class Classifier(torch.nn.Module):
 
@@ -19,3 +20,25 @@ class Classifier(torch.nn.Module):
     x = torch.reshape(x, (x.size(0), -1))
     x = F.relu(self.linear1(x))
     return x
+
+
+# For use with tightrope autoencoder
+class LinearClassifier(torch.nn.Module):
+
+  LINEAR_SIZE = 96 * 4 * 4
+
+  def __init__(self):
+    super().__init__()
+    self.linear1 = nn.Linear(self.LINEAR_SIZE, self.LINEAR_SIZE)
+    self.linear2 = nn.Linear(self.LINEAR_SIZE, self.LINEAR_SIZE)
+    self.linear3 = nn.Linear(self.LINEAR_SIZE, self.LINEAR_SIZE)
+    self.linear4 = nn.Linear(self.LINEAR_SIZE, 800)
+
+  def forward(self, x):
+    x = torch.reshape(x, (x.size(0), -1))
+    x = F.relu(self.linear1(x))
+    x = F.relu(self.linear2(x))
+    x = F.relu(self.linear3(x))
+    x = self.linear4(x)
+    return x
+

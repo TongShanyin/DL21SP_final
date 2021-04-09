@@ -9,8 +9,8 @@ import torch.nn.functional as F
 from torchvision import datasets, transforms, models
 
 from dataloader import CustomDataset
-from autoencoder import Encoder, Decoder, train_transforms, EncoderSmall, DecoderSmall
-from classifier import Classifier
+from autoencoder_tightrope import Encoder, Decoder, train_transforms
+from classifier import Classifier, LinearClassifier
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--checkpoint_dir', type=str) # this is where the final checkpoint will go
@@ -20,27 +20,28 @@ args = parser.parse_args()
 trainset = CustomDataset(root='/dataset', split='train', transform=train_transforms)
 trainloader = torch.utils.data.DataLoader(trainset, batch_size=256, shuffle=True, num_workers=2)
 
-evalset = CustomDataset(root='/dataset', split="val", transform=train_transforms)
-evalloader = torch.utils.data.DataLoader(evalset, batch_size=256, shuffle=False, num_workers=2)
-
-pretrained_encoder = EncoderSmall()
+pretrained_encoder = Encoder()
 pretrained_encoder.load_state_dict(torch.load(args.encoder_checkpoint))
-#classifier = Classifier()
-classifier = models.resnet18(num_classes=800)
+classifier = LinearClassifier()
 net = nn.Sequential(pretrained_encoder, classifier).cuda()
 
 criterion = nn.CrossEntropyLoss()
-#optimizer = torch.optim.Adam(net.parameters(), lr=0.1)
-optimizer = torch.optim.SGD(net.parameters(), lr=0.01, momentum=0.9)
+optimizer = torch.optim.Adam(net.parameters(), lr=0.001)
 
 print('Start Training')
 tic = time.perf_counter()
 
 net.train()
-for epoch in range(10):
+steps = 0
+for epoch in range(100):
     running_loss = 0.0
+    #if steps > 10:
+    #    break
     for i, data in enumerate(trainloader):
-        # get the inputs; data is a list of inputs, labels
+        steps += 1
+        #if steps > 10:
+        #    break
+        # get the inputs; data is a list of Äinputs, labelsÜ
         inputs, labels = data
         inputs, labels = inputs.cuda(), labels.cuda()
 
@@ -50,6 +51,9 @@ for epoch in range(10):
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
+
+        #print(labels[0])
+        #print(outputs[0])
 
         # print statistics
         running_loss += loss.item()
@@ -80,7 +84,7 @@ print(f"Accuracy: {(100 * correct / total):.2f}%")
 
 os.makedirs(args.checkpoint_dir, exist_ok=True)
 torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, "net_classifier.pth"))
-print(f"Saved checkpoint to {os.path.join(args.checkpoint_dir, 'net_classifier.pth')}")
+print(f"Saved checkpoint to äos.path.join(args.checkpoint_dir, 'net_classifier.pth')¨")
 
 
 
