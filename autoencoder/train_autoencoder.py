@@ -12,7 +12,7 @@ import torch.nn.functional as F
 from torchvision import datasets, transforms, models
 
 from dataloader import CustomDataset
-from autoencoder import Encoder, Decoder, train_transforms
+from autoencoder import Encoder, Decoder, EncoderSmall, DecoderSmall, train_transforms
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--checkpoint-dir', type=str)
@@ -21,8 +21,8 @@ args = parser.parse_args()
 trainset = CustomDataset(root='/dataset', split="unlabeled", transform=train_transforms)
 trainloader = torch.utils.data.DataLoader(trainset, batch_size=256, shuffle=True, num_workers=2)
 
-encoder = Encoder()
-decoder = Decoder()
+encoder = EncoderSmall()
+decoder = DecoderSmall()
 net = nn.Sequential(encoder, decoder).cuda()
 
 criterion = nn.MSELoss()
@@ -32,7 +32,7 @@ print('Start Training')
 tic = time.perf_counter()
 
 net.train()
-for epoch in range(10):
+for epoch in range(3):
     running_loss = 0.0
     for i, data in enumerate(trainloader):
         # get the inputs; data is a list of [inputs, labels]
@@ -57,6 +57,6 @@ toc = time.perf_counter()
 print('Time elapsed: ' + str(toc - tic))
 
 os.makedirs(args.checkpoint_dir, exist_ok=True)
-torch.save(encoder.state_dict(), os.path.join(args.checkpoint_dir, "encoder_big_10ep.pth"))
+torch.save(encoder.state_dict(), os.path.join(args.checkpoint_dir, "encoder_small_3ep_relu.pth"))
 
-print(f"Saved checkpoint to {os.path.join(args.checkpoint_dir, 'encoder_big_10ep.pth')}")
+print(f"Saved checkpoint to {os.path.join(args.checkpoint_dir, 'encoder_small_3ep_relu.pth')}")

@@ -3,7 +3,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --partition=n1s8-t4-1
 #SBATCH --account=dl06
-#SBATCH --time=02:00:00
+#SBATCH --time=04:00:00
 #SBATCH --output=logs/demo_%j.out
 #SBATCH --error=logs/demo_%j.err
 #SBATCH --exclusive
@@ -20,7 +20,7 @@ cp -rp /scratch/DL21SP/student_dataset.sqsh /tmp
 echo "Dataset is copied to /tmp"
 
 #cd $HOME/test
-cd scratch/$USER/test
+cd /scratch/ccp5804/DL21SP_final/autoencoder
 
 singularity exec --nv \
 --bind /scratch \
