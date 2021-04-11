@@ -31,5 +31,4 @@ singularity exec --nv \
 source /ext3/env.sh
 conda activate dev
 python train_classifier.py --checkpoint_dir checkpoints/ --encoder_checkpoint checkpoints/tightrope_encoder_ep_14
-python eval.py --checkpoint-path checkpoints/net_classifier.pth
 "

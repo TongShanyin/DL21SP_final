@@ -37,7 +37,10 @@ net = nn.Sequential(pretrained_encoder, classifier).cuda()
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(net.parameters(), lr=0.001)
 
-print('Start Training, use checkpoint'+args.encoder_checkpoint)
+print('Start Training')
+print('use checkpoint'+args.encoder_checkpoint)
+#print('random initialization for encoder')
+
 tic = time.perf_counter()
 
 net.train()
