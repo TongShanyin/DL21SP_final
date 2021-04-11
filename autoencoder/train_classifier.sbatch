@@ -4,8 +4,8 @@
 #SBATCH --partition=n1s8-t4-1
 #SBATCH --account=dl06
 #SBATCH --time=05:00:00
-#SBATCH --output=logs/demo_%j.out
-#SBATCH --error=logs/demo_%j.err
+#SBATCH --output=logs/train_cl_%j.out
+#SBATCH --error=logs/train_cl_%j.err
 #SBATCH --exclusive
 #SBATCH --requeue 
 
@@ -30,6 +30,6 @@ singularity exec --nv \
 /bin/bash -c "
 source /ext3/env.sh
 conda activate dev
-python train_classifier.py --checkpoint_dir checkpoints/ --encoder_checkpoint checkpoints/tightrope_encoder_3ep.pth
+python train_classifier.py --checkpoint_dir checkpoints/ --encoder_checkpoint checkpoints/tightrope_encoder_ep_14
 python eval.py --checkpoint-path checkpoints/net_classifier.pth
 "

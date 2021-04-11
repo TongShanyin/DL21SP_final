@@ -1,0 +1,123 @@
+Dataset is copied to /tmp
+Start Training, use checkpointcheckpoints/tightrope_encoder_ep_4
+[1,    10] loss: 6.712
+[1,    20] loss: 6.689
+[1,    30] loss: 6.686
+[1,    40] loss: 6.682
+[1,    50] loss: 6.667
+[1,    60] loss: 6.655
+[1,    70] loss: 6.628
+[1,    80] loss: 6.604
+[1,    90] loss: 6.594
+[1,   100] loss: 6.584
+[1] Validation loss: 6.571, Accuracy: 0.30%
+[2,    10] loss: 6.520
+[2,    20] loss: 6.522
+[2,    30] loss: 6.507
+[2,    40] loss: 6.518
+[2,    50] loss: 6.495
+[2,    60] loss: 6.503
+[2,    70] loss: 6.487
+[2,    80] loss: 6.450
+[2,    90] loss: 6.435
+[2,   100] loss: 6.437
+[2] Validation loss: 6.400, Accuracy: 0.75%
+[3,    10] loss: 6.312
+[3,    20] loss: 6.303
+[3,    30] loss: 6.352
+[3,    40] loss: 6.315
+[3,    50] loss: 6.337
+[3,    60] loss: 6.307
+[3,    70] loss: 6.332
+[3,    80] loss: 6.324
+[3,    90] loss: 6.270
+[3,   100] loss: 6.303
+[3] Validation loss: 6.288, Accuracy: 1.10%
+[4,    10] loss: 6.160
+[4,    20] loss: 6.154
+[4,    30] loss: 6.167
+[4,    40] loss: 6.177
+[4,    50] loss: 6.161
+[4,    60] loss: 6.145
+[4,    70] loss: 6.178
+[4,    80] loss: 6.176
+[4,    90] loss: 6.165
+[4,   100] loss: 6.154
+[4] Validation loss: 6.259, Accuracy: 1.19%
+[5,    10] loss: 6.027
+[5,    20] loss: 6.016
+[5,    30] loss: 6.059
+[5,    40] loss: 6.049
+[5,    50] loss: 6.039
+[5,    60] loss: 6.043
+[5,    70] loss: 6.051
+[5,    80] loss: 6.095
+[5,    90] loss: 6.058
+[5,   100] loss: 6.044
+[5] Validation loss: 6.171, Accuracy: 1.46%
+[6,    10] loss: 5.911
+[6,    20] loss: 5.896
+[6,    30] loss: 5.911
+[6,    40] loss: 5.900
+[6,    50] loss: 5.933
+[6,    60] loss: 5.962
+[6,    70] loss: 5.965
+[6,    80] loss: 5.985
+[6,    90] loss: 5.966
+[6,   100] loss: 5.953
+[6] Validation loss: 6.152, Accuracy: 1.75%
+[7,    10] loss: 5.769
+[7,    20] loss: 5.795
+[7,    30] loss: 5.798
+[7,    40] loss: 5.800
+[7,    50] loss: 5.788
+[7,    60] loss: 5.800
+[7,    70] loss: 5.803
+[7,    80] loss: 5.894
+[7,    90] loss: 5.817
+[7,   100] loss: 5.846
+[7] Validation loss: 6.227, Accuracy: 1.86%
+[8,    10] loss: 5.619
+[8,    20] loss: 5.675
+[8,    30] loss: 5.598
+[8,    40] loss: 5.667
+[8,    50] loss: 5.695
+[8,    60] loss: 5.708
+[8,    70] loss: 5.722
+[8,    80] loss: 5.692
+[8,    90] loss: 5.721
+[8,   100] loss: 5.705
+[8] Validation loss: 6.197, Accuracy: 2.17%
+[9,    10] loss: 5.395
+[9,    20] loss: 5.472
+[9,    30] loss: 5.465
+[9,    40] loss: 5.499
+[9,    50] loss: 5.537
+[9,    60] loss: 5.563
+[9,    70] loss: 5.511
+[9,    80] loss: 5.597
+[9,    90] loss: 5.592
+[9,   100] loss: 5.621
+[9] Validation loss: 6.209, Accuracy: 2.20%
+[10,    10] loss: 5.297
+[10,    20] loss: 5.310
+[10,    30] loss: 5.332
+[10,    40] loss: 5.328
+[10,    50] loss: 5.384
+[10,    60] loss: 5.441
+[10,    70] loss: 5.388
+[10,    80] loss: 5.448
+[10,    90] loss: 5.478
+[10,   100] loss: 5.400
+[10] Validation loss: 6.301, Accuracy: 2.50%
+[11,    10] loss: 5.048
+[11,    20] loss: 5.094
+[11,    30] loss: 5.147
+[11,    40] loss: 5.213
+[11,    50] loss: 5.215
+[11,    60] loss: 5.224
+[11,    70] loss: 5.269
+[11,    80] loss: 5.249
+[11,    90] loss: 5.239
+[11,   100] loss: 5.243
+[11] Validation loss: 6.423, Accuracy: 2.31%

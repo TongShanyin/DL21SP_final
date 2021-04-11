@@ -26,18 +26,23 @@ evalloader = torch.utils.data.DataLoader(evalset, batch_size=256, shuffle=False,
 
 pretrained_encoder = Encoder()
 pretrained_encoder.load_state_dict(torch.load(args.encoder_checkpoint))
+
+#for param in pretrained_encoder.parameters(): # freeze encoder weights
+#    param.requires_grad = False
+#print('freeze encoder')
+
 classifier = LinearClassifier()
 net = nn.Sequential(pretrained_encoder, classifier).cuda()
 
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(net.parameters(), lr=0.001)
 
-print('Start Training')
+print('Start Training, use checkpoint'+args.encoder_checkpoint)
 tic = time.perf_counter()
 
 net.train()
 steps = 0
-for epoch in range(100):
+for epoch in range(30):
     net.train()
     running_loss = 0.0
     #if steps > 10:
@@ -87,7 +92,7 @@ for epoch in range(100):
     print(f"[{epoch+1}] Validation loss: {validation_loss/100:.3f}, Accuracy: {(100 * correct / total):.2f}%")
     if epoch % 10 == 9: # save every 10 epochs
         os.makedirs(args.checkpoint_dir, exist_ok=True)
-        torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, f"net_classifier_epoch{epoch+1}.pth"))
+        torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, "net_classifier_encoder"+args.encoder_checkpoint[-2:]+f"_epoch{epoch+1}.pth"))
         #print(f"Saved checkpoint to {os.path.join(args.checkpoint_dir, 'net_classifier.pth')}")
 
 
