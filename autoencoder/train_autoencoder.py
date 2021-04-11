@@ -30,12 +30,20 @@ net = net.cuda()
 criterion = nn.MSELoss()
 optimizer = torch.optim.Adam(net.parameters(), lr=0.01)
 
+os.makedirs(args.checkpoint_dir, exist_ok=True)
+
 print('Start Training')
 tic = time.perf_counter()
 
 net.train()
 steps = 0
-for epoch in range(1):
+for epoch in range(51):
+    if epoch % 5 == 4:
+        torch.save(encoder.state_dict(), os.path.join(args.checkpoint_dir, "tightrope_encoder_ep_%s" % str(epoch)))
+        print("Saved intermediate checkpoint to tightrope_encoder_ep_%s" % str(epoch))
+        tac = time.perf_counter()
+        print("Time elapsed: " + str(tac - tic))
+
     running_loss = 0.0
     #if steps >= 500:
     #    break
@@ -65,7 +73,6 @@ print('Finished Training')
 toc = time.perf_counter()
 print('Time elapsed: ' + str(toc - tic))
 
-os.makedirs(args.checkpoint_dir, exist_ok=True)
 torch.save(encoder.state_dict(), os.path.join(args.checkpoint_dir, "tightrope_encoder_ep.pth"))
 
 print(f"Saved checkpoint to {os.path.join(args.checkpoint_dir, 'tightrope_encoder_ep.pth')}")
