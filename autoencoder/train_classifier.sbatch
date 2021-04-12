@@ -30,5 +30,5 @@ singularity exec --nv \
 /bin/bash -c "
 source /ext3/env.sh
 conda activate dev
-python train_classifier.py --checkpoint_dir checkpoints/small_classifier --encoder_checkpoint checkpoints/tightrope_encoder_ep_14
+python train_classifier.py --checkpoint_dir checkpoints/small_classifier --encoder_checkpoint checkpoints/tightrope_4_12/tightrope_encoder_ep_5
 "

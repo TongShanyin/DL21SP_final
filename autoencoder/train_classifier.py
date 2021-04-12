@@ -32,8 +32,9 @@ net = nn.Sequential(pretrained_encoder, classifier).cuda()
 
 criterion = nn.CrossEntropyLoss()
 
-print('Encoder: FROZEN WEIGHTS')
-optimizer = torch.optim.Adam(classifier.parameters(), lr=0.001)
+#print('Encoder: FROZEN WEIGHTS')
+#optimizer = torch.optim.Adam(classifier.parameters(), lr=0.001)
+optimizer = torch.optim.Adam(net.parameters(), lr=0.001, weight_decay=1e-4)
 
 print('Start Training')
 print('use checkpoint'+args.encoder_checkpoint)
