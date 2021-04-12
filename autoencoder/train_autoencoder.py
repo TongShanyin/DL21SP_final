@@ -74,5 +74,6 @@ toc = time.perf_counter()
 print('Time elapsed: ' + str(toc - tic))
 
 torch.save(encoder.state_dict(), os.path.join(args.checkpoint_dir, "tightrope_encoder_ep.pth"))
+torch.save(decoder.state_dict(), os.path.join(args.checkpoint_dir, "tightrope_decoder_ep.pth"))
 
 print(f"Saved checkpoint to {os.path.join(args.checkpoint_dir, 'tightrope_encoder_ep.pth')}")
