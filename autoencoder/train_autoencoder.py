@@ -38,8 +38,9 @@ tic = time.perf_counter()
 net.train()
 steps = 0
 for epoch in range(51):
-    if epoch % 5 == 4:
+    if epoch % 5 == 0 or epoch == 1:
         torch.save(encoder.state_dict(), os.path.join(args.checkpoint_dir, "tightrope_encoder_ep_%s" % str(epoch)))
+        torch.save(decoder.state_dict(), os.path.join(args.checkpoint_dir, "tightrope_decoder_ep_%s" % str(epoch)))
         print("Saved intermediate checkpoint to tightrope_encoder_ep_%s" % str(epoch))
         tac = time.perf_counter()
         print("Time elapsed: " + str(tac - tic))

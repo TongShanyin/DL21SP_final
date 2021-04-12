@@ -4,8 +4,8 @@
 #SBATCH --partition=n1s8-t4-1
 #SBATCH --account=dl06
 #SBATCH --time=05:00:00
-#SBATCH --output=logs/frozen_classifier/train_cl_%j.out
-#SBATCH --error=logs/frozen_classifier/train_cl_%j.err
+#SBATCH --output=logs/small_classifier/train_cl_%j.out
+#SBATCH --error=logs/small_classifier/train_cl_%j.err
 #SBATCH --exclusive
 #SBATCH --requeue 
 
@@ -30,5 +30,5 @@ singularity exec --nv \
 /bin/bash -c "
 source /ext3/env.sh
 conda activate dev
-python train_classifier.py --checkpoint_dir checkpoints/frozen_classifier --encoder_checkpoint checkpoints/tightrope_encoder_ep_14
+python train_classifier.py --checkpoint_dir checkpoints/small_classifier --encoder_checkpoint checkpoints/tightrope_encoder_ep_14
 "

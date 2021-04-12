@@ -23,6 +23,7 @@ class Classifier(torch.nn.Module):
 
 
 # For use with tightrope autoencoder
+# Has ~8M parameters
 class LinearClassifier(torch.nn.Module):
 
   LINEAR_SIZE = 96 * 4 * 4
@@ -42,3 +43,25 @@ class LinearClassifier(torch.nn.Module):
     x = self.linear4(x)
     return x
 
+# Has fewer parameters
+class SmallLinearClassifier(torch.nn.Module):
+
+    LINEAR_SIZE = 96 * 4 * 4
+    INNER_DIM = 50
+
+    def __init__(self):
+      super().__init__()
+      self.linear1 = nn.Linear(self.LINEAR_SIZE, self.INNER_DIM)
+      self.linear2 = nn.Linear(self.INNER_DIM, self.INNER_DIM)
+      self.linear3 = nn.Linear(self.INNER_DIM, self.INNER_DIM)
+      self.linear4 = nn.Linear(self.INNER_DIM, self.INNER_DIM)
+      self.linear5 = nn.Linear(self.INNER_DIM, 800)
+
+    def forward(self, x):
+      x = torch.reshape(x, (x.size(0), -1))
+      x = F.relu(self.linear1(x))
+      x = F.relu(self.linear2(x))
+      x = F.relu(self.linear3(x))
+      x = F.relu(self.linear4(x))
+      x = self.linear5(x)
+      return x

@@ -10,7 +10,7 @@ from torchvision import datasets, transforms, models
 
 from dataloader import CustomDataset
 from autoencoder_tightrope import Encoder, Decoder, train_transforms, validation_transforms
-from classifier import Classifier, LinearClassifier
+from classifier import Classifier, LinearClassifier, SmallLinearClassifier
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--checkpoint_dir', type=str) # this is where the final checkpoint will go
@@ -27,7 +27,7 @@ evalloader = torch.utils.data.DataLoader(evalset, batch_size=256, shuffle=False,
 pretrained_encoder = Encoder()
 pretrained_encoder.load_state_dict(torch.load(args.encoder_checkpoint))
 
-classifier = LinearClassifier()
+classifier = SmallLinearClassifier()
 net = nn.Sequential(pretrained_encoder, classifier).cuda()
 
 criterion = nn.CrossEntropyLoss()
@@ -42,7 +42,7 @@ tic = time.perf_counter()
 
 net.train()
 steps = 0
-for epoch in range(30):
+for epoch in range(50):
     net.train()
     running_loss = 0.0
     #if steps > 10:
