@@ -3,9 +3,9 @@
 #SBATCH --gres=gpu:1
 #SBATCH --partition=n1s8-t4-1
 #SBATCH --account=dl06
-#SBATCH --time=10:00:00
-#SBATCH --output=logs/demo_%j.out
-#SBATCH --error=logs/demo_%j.err
+#SBATCH --time=05:00:00
+#SBATCH --output=logs/autoencoder_resnet/demo_%j.out
+#SBATCH --error=logs/autoencoder_resnet/demo_%j.err
 #SBATCH --exclusive
 #SBATCH --requeue 
 
@@ -30,5 +30,5 @@ singularity exec --nv \
 /bin/bash -c "
 source /ext3/env.sh
 conda activate dev
-python train_autoencoder.py --checkpoint-dir checkpoints/tightrope_4_12
+python train_autoencoder.py --checkpoint-dir checkpoints/autoencoder_resnet
 "
