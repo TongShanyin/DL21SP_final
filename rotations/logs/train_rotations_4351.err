@@ -1,0 +1,12 @@
++ mkdir /tmp/ccp5804
++ export SINGULARITY_CACHEDIR=/tmp/ccp5804
++ SINGULARITY_CACHEDIR=/tmp/ccp5804
++ cp -rp /scratch/DL21SP/student_dataset.sqsh /tmp
++ echo 'Dataset is copied to /tmp'
++ cd /scratch/ccp5804/DL21SP_final/rotations
++ singularity exec --nv --bind /scratch --overlay /scratch/DL21SP/conda.sqsh:ro --overlay /tmp/student_dataset.sqsh:ro /share/apps/images/cuda11.1-cudnn8-devel-ubuntu18.04.sif /bin/bash -c '
+source /ext3/env.sh
+conda activate dev
+python train_rotations.py --checkpoint-dir checkpoints
+'
+slurmstepd: error: *** JOB 4351 ON b-8-64 CANCELLED AT 2021-04-13T23:44:41 DUE TO TIME LIMIT ***
