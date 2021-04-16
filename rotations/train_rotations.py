@@ -19,6 +19,8 @@ normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
 
 train_transforms = transforms.Compose([
                                     transforms.ColorJitter(hue=.1, saturation=.1, contrast=.1),
+                                    transforms.RandomRotation(25),
+                                    transforms.RandomResizedCrop(96, scale=(0.8, 1.0)),
                                     transforms.ToTensor(),  # convert PIL to Pytorch Tensor
                                     normalize,
                                 ])
