@@ -4,8 +4,8 @@
 #SBATCH --partition=n1s8-t4-1
 #SBATCH --account=dl06
 #SBATCH --time=01:00:00
-#SBATCH --output=logs/train_cl_conv4_DOmoreBN_%j.out
-#SBATCH --error=logs/train_cl_conv4_DOmoreBN_%j.err
+#SBATCH --output=logs/train_cl_rotsandperms2_30_%j.out
+#SBATCH --error=logs/train_cl_rotsandperms2_30_%j.err
 #SBATCH --exclusive
 #SBATCH --requeue 
 
@@ -30,5 +30,5 @@ singularity exec --nv \
 /bin/bash -c "
 source /ext3/env.sh
 conda activate dev
-python train_classifier.py --checkpoint_dir checkpoints --alexnet_checkpoint checkpoints/rotations_long/rotations_ep_25
+python train_classifier.py --checkpoint_dir checkpoints --alexnet_checkpoint checkpoints/rots_and_perms2/rotations_ep_30
 "
