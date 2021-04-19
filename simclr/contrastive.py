@@ -9,12 +9,14 @@ normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
 color_jitter = transforms.ColorJitter(0.8, 0.8 , 0.8 , 0.2)
 
 resize_size = 96
+#resize_size = 84
 
 train_transforms = transforms.Compose([
                                     transforms.RandomResizedCrop(size=resize_size),
                                     transforms.RandomHorizontalFlip(),
                                     transforms.RandomApply([color_jitter], p=0.8),
                                     transforms.RandomGrayscale(p=0.2),
+                                    transforms.RandomRotation(25),
                                     #transforms.ColorJitter(hue=.1, saturation=.1, contrast=.1),
                                     transforms.ToTensor(),  # convert PIL to Pytorch Tensor
                                     #normalize,
@@ -37,12 +39,13 @@ class Identity(nn.Module):
 class Encoder(nn.Module): # resnet50 after average pooling
     def __init__(self):
         super(Encoder, self).__init__()
-        self.encoder = torchvision.models.resnet50()
+       # self.encoder = torchvision.models.resnet50()
+        self.encoder = torchvision.models.resnet18()
         self.encoder.fc = Identity()
 
     def forward(self, x):
         x = self.encoder(x)
-        return x # 2048
+        return x # resnet50: 2048, resnet 18: 512
 
 class Projector(nn.Module): # MLP with one hidden layer
     def __init__(self,num_feature, num_latent):
