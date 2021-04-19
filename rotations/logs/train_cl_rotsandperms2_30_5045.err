@@ -1,0 +1,9 @@
++ mkdir /tmp/ccp5804
++ export SINGULARITY_CACHEDIR=/tmp/ccp5804
++ SINGULARITY_CACHEDIR=/tmp/ccp5804
++ cp -rp /scratch/DL21SP/student_dataset.sqsh /tmp
++ echo 'Dataset is copied to /tmp'
++ cd scratch/ccp5804/test
+/opt/slurm/data/slurmd/job05045/slurm_script: line 23: cd: scratch/ccp5804/test: No such file or directory
+/opt/slurm/data/slurmd/job05045/slurm_script: line 30: unexpected EOF while looking for matching `"'
+/opt/slurm/data/slurmd/job05045/slurm_script: line 34: syntax error: unexpected end of file

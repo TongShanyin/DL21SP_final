@@ -14,6 +14,7 @@ from dataloader import CustomDataset
 parser = argparse.ArgumentParser()
 parser.add_argument('--checkpoint_dir', type=str) # this is where the final checkpoint will go
 parser.add_argument('--alexnet_checkpoint', type=str) # checkpoint for pre-trained alexnet
+parser.add_argument('--classifier_checkpoint', type=str) # checkpoint for pre-trained classifier
 args = parser.parse_args()
 
 normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
@@ -48,8 +49,8 @@ class LinearClassifier(torch.nn.Module):
     self.linear2 = nn.Linear(2048, 1024)
     self.linear3 = nn.Linear(1024, 800)
 
-    self.dropout1 = torch.nn.Dropout(p=0.75)
-    self.dropout2 = torch.nn.Dropout(p=0.75)
+    self.dropout1 = torch.nn.Dropout(p=0.5)
+    self.dropout2 = torch.nn.Dropout(p=0.5)
     self.bn1 = torch.nn.BatchNorm1d(self.LINEAR_SIZE)
     self.bn2 = torch.nn.BatchNorm1d(2048)
     self.bn3 = torch.nn.BatchNorm1d(1024)
@@ -66,24 +67,21 @@ class LinearClassifier(torch.nn.Module):
     x = self.linear3(x)
     return x
 
-print('SUPER SLOW SCHEDULE - lots of DO')
+print('finetune')
 alexnet = torchvision.models.alexnet(pretrained=False)
 alexnet.classifier[6] = torch.nn.Linear(4096, 4)
 alexnet.load_state_dict(torch.load(args.alexnet_checkpoint))
-for param in alexnet.parameters():
-    param.requires_grad = False
-#for layer in alexnet.features[:9]:
-#    for param in layer.parameters():
-#        param.requires_grad = False
 feature_extractor = alexnet.features[:9]
-classifier = LinearClassifier()
-net = nn.Sequential(feature_extractor, classifier)
 
+classifier = LinearClassifier()
+classifier.load_state_dict(torch.load(args.alexnet_checkpoint))
+
+net = nn.Sequential(feature_extractor, classifier)
 net = net.cuda()
 
 criterion = nn.CrossEntropyLoss()
 
-optimizer = torch.optim.SGD(net.parameters(), lr=0.01, momentum=0.9, weight_decay=5e-4)
+optimizer = torch.optim.SGD(net.parameters(), lr=0.001, momentum=0.9, weight_decay=5e-4)
 scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[15, 30, 45], gamma=0.5)
 
 print('Start Training')
@@ -136,7 +134,7 @@ for epoch in range(50):
 
     if epoch % 10 == 9: # save every 10 epochs
         os.makedirs(args.checkpoint_dir, exist_ok=True)
-        torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, "rotation_classifier"+args.alexnet_checkpoint[-2:]+f"_epoch{epoch+1}.pth"))
+        torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, "finetuned_rotation_classifier"+args.alexnet_checkpoint[-2:]+f"_epoch{epoch+1}.pth"))
         #print(f"Saved checkpoint to {os.path.join(args.checkpoint_dir, 'net_classifier.pth')}")
 
 
@@ -144,29 +142,6 @@ for epoch in range(50):
 print('Finished Training')
 toc = time.perf_counter()
 print('Time elapsed: ' + str(toc - tic))
-print(f"Saved checkpoint to {os.path.join(args.checkpoint_dir, 'rotation_classifier.pth')}")
-
-#net.eval()
-#correct = 0
-#total = 0
-#with torch.no_grad():
-#    for data in evalloader:
-#        images, labels = data
-
-#        images = images.cuda()
-#        labels = labels.cuda()
-
-#        outputs = net(images)
-#        _, predicted = torch.max(outputs.data, 1)
-#        total += labels.size(0)
-#        correct += (predicted == labels).sum().item()
-
-#print(f"Accuracy: {(100 * correct / total):.2f}%")
-
-#os.makedirs(args.checkpoint_dir, exist_ok=True)
-#torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, "net_classifier.pth"))
-#print(f"Saved checkpoint to {os.path.join(args.checkpoint_dir, 'net_classifier.pth')}")
-
-
+print(f"Saved checkpoint to {os.path.join(args.checkpoint_dir, 'finetuned_rotation_classifier.pth')}")
 
 

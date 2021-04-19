@@ -1,0 +1,20 @@
++ mkdir /tmp/ccp5804
++ export SINGULARITY_CACHEDIR=/tmp/ccp5804
++ SINGULARITY_CACHEDIR=/tmp/ccp5804
++ cp -rp /scratch/DL21SP/student_dataset.sqsh /tmp
++ echo 'Dataset is copied to /tmp'
++ cd scratch/ccp5804/test
+/opt/slurm/data/slurmd/job05417/slurm_script: line 23: cd: scratch/ccp5804/test: No such file or directory
++ singularity exec --nv --bind /scratch --overlay /scratch/DL21SP/conda.sqsh:ro --overlay /tmp/student_dataset.sqsh:ro /share/apps/images/cuda11.1-cudnn8-devel-ubuntu18.04.sif /bin/bash -c '
+source /ext3/env.sh
+conda activate dev
+python finetune.py --checkpoint_dir checkpoints --alexnet_checkpoint checkpoints/rotations_aug/rotations_ep_80 --classifier_checkpoint checkpoints/rotation_classifier80_epoch50.pth
+'
+Traceback (most recent call last):
+  File "finetune.py", line 77, in <module>
+    classifier.load_state_dict(torch.load(args.alexnet_checkpoint))
+  File "/ext3/miniconda3/envs/dev/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1223, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for LinearClassifier:
+	Missing key(s) in state_dict: "linear1.weight", "linear1.bias", "linear2.weight", "linear2.bias", "linear3.weight", "linear3.bias", "bn1.weight", "bn1.bias", "bn1.running_mean", "bn1.running_var", "bn2.weight", "bn2.bias", "bn2.running_mean", "bn2.running_var", "bn3.weight", "bn3.bias", "bn3.running_mean", "bn3.running_var". 
+	Unexpected key(s) in state_dict: "features.0.weight", "features.0.bias", "features.3.weight", "features.3.bias", "features.6.weight", "features.6.bias", "features.8.weight", "features.8.bias", "features.10.weight", "features.10.bias", "classifier.1.weight", "classifier.1.bias", "classifier.4.weight", "classifier.4.bias", "classifier.6.weight", "classifier.6.bias". 
