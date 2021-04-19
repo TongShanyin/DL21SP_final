@@ -40,7 +40,7 @@ evalloader = torch.utils.data.DataLoader(evalset, batch_size=192, shuffle=False,
 
 class LinearClassifier(torch.nn.Module):
 
-  LINEAR_SIZE = 6400
+  LINEAR_SIZE = 4096
 
   def __init__(self):
     super().__init__()
@@ -48,8 +48,8 @@ class LinearClassifier(torch.nn.Module):
     self.linear2 = nn.Linear(2048, 1024)
     self.linear3 = nn.Linear(1024, 800)
 
-    self.dropout1 = torch.nn.Dropout(p=0.75)
-    self.dropout2 = torch.nn.Dropout(p=0.75)
+    self.dropout1 = torch.nn.Dropout(p=0.65)
+    self.dropout2 = torch.nn.Dropout(p=0.65)
     self.bn1 = torch.nn.BatchNorm1d(self.LINEAR_SIZE)
     self.bn2 = torch.nn.BatchNorm1d(2048)
     self.bn3 = torch.nn.BatchNorm1d(1024)
@@ -66,16 +66,15 @@ class LinearClassifier(torch.nn.Module):
     x = self.linear3(x)
     return x
 
-print('SUPER SLOW SCHEDULE - lots of DO')
-alexnet = torchvision.models.alexnet(pretrained=False)
-alexnet.classifier[6] = torch.nn.Linear(4096, 4)
-alexnet.load_state_dict(torch.load(args.alexnet_checkpoint))
-for param in alexnet.parameters():
+print('CONV4, SMALL CLASSIFIER, DROPOUT+MoreBN')
+feature_extractor = torchvision.models.alexnet(pretrained=False)
+feature_extractor.classifier = nn.Sequential(
+    nn.Dropout(),
+    nn.Linear(256 * 6 * 6, 4096),
+)
+
+for param in feature_extractor.parameters():
     param.requires_grad = False
-#for layer in alexnet.features[:9]:
-#    for param in layer.parameters():
-#        param.requires_grad = False
-feature_extractor = alexnet.features[:9]
 classifier = LinearClassifier()
 net = nn.Sequential(feature_extractor, classifier)
 
@@ -83,8 +82,7 @@ net = net.cuda()
 
 criterion = nn.CrossEntropyLoss()
 
-optimizer = torch.optim.SGD(net.parameters(), lr=0.01, momentum=0.9, weight_decay=5e-4)
-scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[15, 30, 45], gamma=0.5)
+optimizer = torch.optim.Adam(net.parameters(), lr=0.001, weight_decay=5e-4)
 
 print('Start Training')
 print('use checkpoint'+args.alexnet_checkpoint)
@@ -132,8 +130,6 @@ for epoch in range(50):
             correct += (predicted == labels).sum().item()
 
     print(f"[{epoch+1}] Validation loss: {validation_loss/130:.3f}, Accuracy: {(100 * correct / total):.2f}%")
-    scheduler.step()
-
     if epoch % 10 == 9: # save every 10 epochs
         os.makedirs(args.checkpoint_dir, exist_ok=True)
         torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, "rotation_classifier"+args.alexnet_checkpoint[-2:]+f"_epoch{epoch+1}.pth"))

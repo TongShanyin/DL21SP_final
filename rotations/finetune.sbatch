@@ -4,8 +4,8 @@
 #SBATCH --partition=n1s8-t4-1
 #SBATCH --account=dl06
 #SBATCH --time=01:00:00
-#SBATCH --output=c_logs/train_8DO_superslowschedule_%j.out
-#SBATCH --error=c_logs/train_8DO_superslowschedule_%j.err
+#SBATCH --output=f_logs/train_finetune_%j.out
+#SBATCH --error=f_logs/train_finetune_%j.err
 #SBATCH --exclusive
 #SBATCH --requeue 
 
@@ -30,5 +30,5 @@ singularity exec --nv \
 /bin/bash -c "
 source /ext3/env.sh
 conda activate dev
-python train_classifier.py --checkpoint_dir checkpoints --alexnet_checkpoint checkpoints/rotations_aug/rotations_ep_80
+python finetune.py --checkpoint_dir checkpoints --alexnet_checkpoint checkpoints/rotations_aug/rotations_ep_80 --classifier_checkpoint checkpoints/rotation_classifier80_epoch50.pth
 "

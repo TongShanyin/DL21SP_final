@@ -3,9 +3,9 @@
 #SBATCH --gres=gpu:1
 #SBATCH --partition=n1s8-t4-1
 #SBATCH --account=dl06
-#SBATCH --time=01:00:00
-#SBATCH --output=c_logs/train_8DO_superslowschedule_%j.out
-#SBATCH --error=c_logs/train_8DO_superslowschedule_%j.err
+#SBATCH --time=20:00:00
+#SBATCH --output=logs/train_jigsaw_%j.out
+#SBATCH --error=logs/train_jigsaw_%j.err
 #SBATCH --exclusive
 #SBATCH --requeue 
 
@@ -20,7 +20,7 @@ cp -rp /scratch/DL21SP/student_dataset.sqsh /tmp
 echo "Dataset is copied to /tmp"
 
 #cd $HOME/test
-cd scratch/$USER/test
+cd /scratch/ccp5804/DL21SP_final/rotations
 
 singularity exec --nv \
 --bind /scratch \
@@ -30,5 +30,5 @@ singularity exec --nv \
 /bin/bash -c "
 source /ext3/env.sh
 conda activate dev
-python train_classifier.py --checkpoint_dir checkpoints --alexnet_checkpoint checkpoints/rotations_aug/rotations_ep_80
+python train_jigsaw.py --checkpoint-dir checkpoints/jigsaw
 "

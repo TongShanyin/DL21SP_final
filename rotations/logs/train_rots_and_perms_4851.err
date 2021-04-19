@@ -7,6 +7,6 @@
 + singularity exec --nv --bind /scratch --overlay /scratch/DL21SP/conda.sqsh:ro --overlay /tmp/student_dataset.sqsh:ro /share/apps/images/cuda11.1-cudnn8-devel-ubuntu18.04.sif /bin/bash -c '
 source /ext3/env.sh
 conda activate dev
-python train_rotations.py --checkpoint-dir checkpoints/rotations_xl
+python train_rotations.py --checkpoint-dir checkpoints/rots_and_perms
 '
-slurmstepd: error: *** JOB 4493 ON b-8-23 CANCELLED AT 2021-04-15T05:46:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** JOB 4851 ON b-8-4 CANCELLED AT 2021-04-15T21:05:04 ***
