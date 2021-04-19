@@ -3,7 +3,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --partition=n1s8-t4-1
 #SBATCH --account=dl06
-#SBATCH --time=20:00:00
+#SBATCH --time=05:00:00
 #SBATCH --output=logs/train_rotations_aug_%j.out
 #SBATCH --error=logs/train_rotations_aug_%j.err
 #SBATCH --exclusive
@@ -30,5 +30,5 @@ singularity exec --nv \
 /bin/bash -c "
 source /ext3/env.sh
 conda activate dev
-python train_rotations.py --checkpoint-dir checkpoints/rotations_aug
+python train_rotations.py --checkpoint-dir checkpoints/rotations_aug_cont
 "
