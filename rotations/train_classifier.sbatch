@@ -1,13 +1,15 @@
 #!/bin/bash
 
+#SBATCH --job-name=dummy_train_classifier
+#SBATCH --open-mode=append
+#SBATCH --output=c_logs/train_dummy_%j.out
+#SBATCH --error=c_logs/train_dummy_%j.err
+#SBATCH --time=00:10:00
 #SBATCH --gres=gpu:1
-#SBATCH --partition=n1s8-t4-1
-#SBATCH --account=dl06
-#SBATCH --time=01:00:00
-#SBATCH --output=c_logs/train_8DO_superslowschedule_%j.out
-#SBATCH --error=c_logs/train_8DO_superslowschedule_%j.err
-#SBATCH --exclusive
-#SBATCH --requeue 
+#SBATCH --mem=64G
+#SBATCH -c 4
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1
 
 /share/apps/local/bin/p2pBandwidthLatencyTest > /dev/null 2>&1
 
@@ -16,7 +18,7 @@ set -x
 mkdir /tmp/$USER
 export SINGULARITY_CACHEDIR=/tmp/$USER
 
-cp -rp /scratch/DL21SP/student_dataset.sqsh /tmp
+cp -rp /scratch/ccp5804/DL21SP/student_dataset.sqsh /tmp
 echo "Dataset is copied to /tmp"
 
 #cd $HOME/test
@@ -24,9 +26,9 @@ cd scratch/$USER/test
 
 singularity exec --nv \
 --bind /scratch \
---overlay /scratch/DL21SP/conda.sqsh:ro \
+--overlay /scratch/ccp5804/DL21SP/conda.sqsh:ro \
 --overlay /tmp/student_dataset.sqsh:ro \
-/share/apps/images/cuda11.1-cudnn8-devel-ubuntu18.04.sif \
+/scratch/work/public/singularity/cuda10.1-cudnn7-devel-ubuntu18.04-20201207.sif \
 /bin/bash -c "
 source /ext3/env.sh
 conda activate dev
