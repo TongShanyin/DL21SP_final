@@ -15,9 +15,11 @@ from contrastive import SimCLR, NTXent, train_transforms, validation_transforms
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--checkpoint-dir', type=str)
+parser.add_argument('--checkpoint_net', type=str)
 args = parser.parse_args()
 
-BATCH_SIZE = 256
+#BATCH_SIZE = 256
+BATCH_SIZE = 1024
 
 trainset = ContrastiveDataset(root='/dataset', split="unlabeled", transform=train_transforms)
 trainloader = torch.utils.data.DataLoader(trainset, batch_size=BATCH_SIZE, shuffle=True, num_workers=2)
@@ -25,14 +27,22 @@ trainloader = torch.utils.data.DataLoader(trainset, batch_size=BATCH_SIZE, shuff
 #evalset = ContrastiveDataset(root='/dataset', split="val", transform=validation_transforms)
 #evalloader = torch.utils.data.DataLoader(evalset, batch_size=256, shuffle=False, num_workers=2)
 
-NUM_FEATURE = 2048
+#NUM_FEATURE = 2048 #renet50
+NUM_FEATURE = 512 #resnet18
 NUM_LATENT = 128
-TEMPERATURE = 1.
+#TEMPERATURE = 1.
+TEMPERATURE = 0.5
 
 net = SimCLR(NUM_FEATURE, NUM_LATENT).cuda()
+
+net.load_state_dict(torch.load(args.checkpoint_net)) # use previous weights
+print('use checkpoint:'+args.checkpoint_net)
+
 criterion = NTXent(BATCH_SIZE, TEMPERATURE).cuda()
 
-optimizer = torch.optim.Adam(net.parameters(), lr=0.3, weight_decay=1e-6)
+#optimizer = torch.optim.Adam(net.parameters(), lr=1e-4, weight_decay=1e-4)
+optimizer = torch.optim.SGD(net.parameters(), lr=1e-2, momentum=0.9, weight_decay=1e-4)
+scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[10, 20, 30, 40], gamma=0.1)
 
 os.makedirs(args.checkpoint_dir, exist_ok=True)
 
@@ -66,11 +76,12 @@ for epoch in range(50):
     
     tac = time.perf_counter()
     print("Time elapsed: " + str(tac - tic))
-    if epoch % 5 == 4:
-        torch.save(net.encoder.state_dict(), os.path.join(args.checkpoint_dir, "simclr_encoder_ep_%s" % str(epoch+1)))
-        print("Saved intermediate checkpoint to encoder_ep_%s" % str(epoch))
-        torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, "simclr_ep_%s" % str(epoch+1)))
-        print("Saved intermediate checkpoint to simclr_ep_%s" % str(epoch))
+    if epoch % 10 == 9:
+        checkpoint_name = "simclr_resnet18_start60_sgd2_"
+        torch.save(net.encoder.state_dict(), os.path.join(args.checkpoint_dir, checkpoint_name+f"encoder_ep_{epoch+1}"))
+        print("Saved intermediate checkpoint to:"+checkpoint_name+f"encoder_ep_{epoch+1}")
+        torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, checkpoint_name+f"ep_{epoch+1}"))
+        print("Saved intermediate checkpoint to:"+checkpoint_name+f"ep_{epoch+1}")
 
 #    net.eval()
 #    running_eval_loss = 0.0

@@ -49,7 +49,8 @@ class LinearClassifier(torch.nn.Module):
     x = self.linear3(x)
     return x
 
-NUM_FEATURE = 2048
+#NUM_FEATURE = 2048
+NUM_FEATURE = 512
 
 encoder = Encoder()
 encoder.load_state_dict(torch.load(args.encoder_checkpoint))
@@ -114,12 +115,13 @@ for epoch in range(30):
     print(f"[{epoch+1}] Validation loss: {validation_loss/100:.3f}, Accuracy: {(100 * correct / total):.2f}%")
     if epoch % 10 == 9: # save every 10 epochs
         os.makedirs(args.checkpoint_dir, exist_ok=True)
-        torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, "classifier"+args.encoder_checkpoint[-2:]+f"_epoch{epoch+1}.pth"))
-        #print(f"Saved checkpoint to {os.path.join(args.checkpoint_dir, 'net_classifier.pth')}")
-
+        torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, "classifier_simclr_resnet18_sgd2_"+args.encoder_checkpoint[-2:]+f"_epoch{epoch+1}.pth"))
+        print("Saved intermediate checkpoint to classifier_simclr_resnet18_sgd2_"+args.encoder_checkpoint[-2:]+f"_epoch{epoch+1}.pth")
+        #torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, "classifier_simclr_lr4_"+args.encoder_checkpoint[-2:]+f"_epoch{epoch+1}.pth"))
+        #print("Saved intermediate checkpoint to classifier_simclr_lr4_"+args.encoder_checkpoint[-2:]+f"_epoch{epoch+1}.pth")
 
 
 print('Finished Training')
 toc = time.perf_counter()
 print('Time elapsed: ' + str(toc - tic))
-print(f"Saved checkpoint to {os.path.join(args.checkpoint_dir, 'classifier.pth')}")
+#print(f"Saved checkpoint to {os.path.join(args.checkpoint_dir, 'classifier_simclr.pth')}")

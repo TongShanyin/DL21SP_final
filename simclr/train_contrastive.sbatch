@@ -8,7 +8,7 @@
 #SBATCH --output=logs/train_simclr_%j.out
 #SBATCH --error=logs/train_simclr_%j.err
 #SBATCH --exclusive
-#SBATCH --requeue 
+#SBATCH --no-requeue 
 
 /share/apps/local/bin/p2pBandwidthLatencyTest > /dev/null 2>&1
 
@@ -31,5 +31,7 @@ singularity exec --nv \
 /bin/bash -c "
 source /ext3/env.sh
 conda activate dev
-python train_contrastive.py --checkpoint-dir checkpoints
+python train_contrastive.py --checkpoint-dir checkpoints --checkpoint_net checkpoints/simclr_resnet18_start50_lr4_ep_10
 "
+#--checkpoint_net checkpoints/simclr_lr3_ep_25
+#"
