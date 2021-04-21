@@ -38,12 +38,12 @@ evalloader = torch.utils.data.DataLoader(evalset, batch_size=192, shuffle=False,
 
 net = torchvision.models.alexnet(pretrained=False)
 net.classifier[6] = torch.nn.Linear(4096, 4)
-net.load_state_dict(torch.load('checkpoints/rotations_aug/rotations_ep_15'))
+net.load_state_dict(torch.load('checkpoints/rotations_aug_doublecont/rotations_ep_10'))
 net = net.cuda()
 
 criterion = torch.nn.CrossEntropyLoss()
-optimizer = torch.optim.SGD(net.parameters(), lr=0.001, momentum=0.9, weight_decay=5e-4)
-scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[15, 30], gamma=0.1)
+optimizer = torch.optim.SGD(net.parameters(), lr=0.0002, momentum=0.9, weight_decay=5e-4)
+scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[10, 20], gamma=0.5)
 
 os.makedirs(args.checkpoint_dir, exist_ok=True)
 
