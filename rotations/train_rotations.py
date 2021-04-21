@@ -31,10 +31,10 @@ parser.add_argument('--checkpoint-dir', type=str)
 args = parser.parse_args()
 
 trainset = RotationDataset(root='/dataset', split="unlabeled", transform=train_transforms)
-trainloader = torch.utils.data.DataLoader(trainset, batch_size=192, shuffle=True, num_workers=2)
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=192, shuffle=True, num_workers=1)
 
 evalset = RotationDataset(root='/dataset', split="val", transform=train_transforms)
-evalloader = torch.utils.data.DataLoader(evalset, batch_size=192, shuffle=False, num_workers=2)
+evalloader = torch.utils.data.DataLoader(evalset, batch_size=192, shuffle=False, num_workers=1)
 
 net = torchvision.models.alexnet(pretrained=False)
 net.classifier[6] = torch.nn.Linear(4096, 4)
