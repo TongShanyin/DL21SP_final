@@ -64,7 +64,7 @@ print('SimCLR encoder + linear classifier + finetuning')
 criterion = nn.CrossEntropyLoss()
 
 optimizer = torch.optim.SGD(net.parameters(), lr=0.0001, momentum=0.9, weight_decay=5e-4)
-scheduler = torch.optim.lr_schedule.MultiStepLR(optimizer, milestones=[10, 20, 30], gamma=0.5)
+scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[10, 20, 30], gamma=0.5)
 
 print('Start Training')
 print('use checkpoint:'+args.model_checkpoint)

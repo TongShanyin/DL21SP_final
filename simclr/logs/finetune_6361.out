@@ -1,0 +1,450 @@
+Dataset is copied to /tmp
+SimCLR encoder + linear classifier + finetuning
+Start Training
+use checkpoint:checkpoints/scratch/classifier_simclr_resnet18_512t01adam4_encoder_epoch30.pth
+[1,    10] loss: 4.434
+[1,    20] loss: 4.494
+[1,    30] loss: 4.537
+[1,    40] loss: 4.459
+[1,    50] loss: 4.462
+[1,    60] loss: 4.482
+[1,    70] loss: 4.443
+[1,    80] loss: 4.469
+[1,    90] loss: 4.497
+[1,   100] loss: 4.392
+[1] Validation loss: 4.529, Accuracy: 14.51%
+[2,    10] loss: 4.463
+[2,    20] loss: 4.454
+[2,    30] loss: 4.436
+[2,    40] loss: 4.459
+[2,    50] loss: 4.451
+[2,    60] loss: 4.409
+[2,    70] loss: 4.430
+[2,    80] loss: 4.485
+[2,    90] loss: 4.449
+[2,   100] loss: 4.397
+[2] Validation loss: 4.512, Accuracy: 14.73%
+[3,    10] loss: 4.483
+[3,    20] loss: 4.491
+[3,    30] loss: 4.336
+[3,    40] loss: 4.440
+[3,    50] loss: 4.422
+[3,    60] loss: 4.433
+[3,    70] loss: 4.472
+[3,    80] loss: 4.441
+[3,    90] loss: 4.395
+[3,   100] loss: 4.437
+[3] Validation loss: 4.515, Accuracy: 14.77%
+[4,    10] loss: 4.412
+[4,    20] loss: 4.409
+[4,    30] loss: 4.487
+[4,    40] loss: 4.448
+[4,    50] loss: 4.424
+[4,    60] loss: 4.442
+[4,    70] loss: 4.413
+[4,    80] loss: 4.452
+[4,    90] loss: 4.420
+[4,   100] loss: 4.464
+[4] Validation loss: 4.515, Accuracy: 14.80%
+[5,    10] loss: 4.471
+[5,    20] loss: 4.402
+[5,    30] loss: 4.396
+[5,    40] loss: 4.405
+[5,    50] loss: 4.396
+[5,    60] loss: 4.336
+[5,    70] loss: 4.435
+[5,    80] loss: 4.376
+[5,    90] loss: 4.412
+[5,   100] loss: 4.372
+[5] Validation loss: 4.487, Accuracy: 14.99%
+[6,    10] loss: 4.464
+[6,    20] loss: 4.447
+[6,    30] loss: 4.338
+[6,    40] loss: 4.339
+[6,    50] loss: 4.387
+[6,    60] loss: 4.347
+[6,    70] loss: 4.367
+[6,    80] loss: 4.403
+[6,    90] loss: 4.452
+[6,   100] loss: 4.437
+[6] Validation loss: 4.490, Accuracy: 15.02%
+[7,    10] loss: 4.382
+[7,    20] loss: 4.459
+[7,    30] loss: 4.435
+[7,    40] loss: 4.425
+[7,    50] loss: 4.431
+[7,    60] loss: 4.448
+[7,    70] loss: 4.416
+[7,    80] loss: 4.392
+[7,    90] loss: 4.369
+[7,   100] loss: 4.419
+[7] Validation loss: 4.483, Accuracy: 14.98%
+[8,    10] loss: 4.390
+[8,    20] loss: 4.427
+[8,    30] loss: 4.418
+[8,    40] loss: 4.347
+[8,    50] loss: 4.413
+[8,    60] loss: 4.370
+[8,    70] loss: 4.393
+[8,    80] loss: 4.385
+[8,    90] loss: 4.441
+[8,   100] loss: 4.425
+[8] Validation loss: 4.470, Accuracy: 15.04%
+[9,    10] loss: 4.384
+[9,    20] loss: 4.448
+[9,    30] loss: 4.390
+[9,    40] loss: 4.359
+[9,    50] loss: 4.415
+[9,    60] loss: 4.415
+[9,    70] loss: 4.373
+[9,    80] loss: 4.389
+[9,    90] loss: 4.361
+[9,   100] loss: 4.409
+[9] Validation loss: 4.459, Accuracy: 15.15%
+[10,    10] loss: 4.476
+[10,    20] loss: 4.430
+[10,    30] loss: 4.373
+[10,    40] loss: 4.356
+[10,    50] loss: 4.340
+[10,    60] loss: 4.416
+[10,    70] loss: 4.443
+[10,    80] loss: 4.369
+[10,    90] loss: 4.372
+[10,   100] loss: 4.405
+[10] Validation loss: 4.464, Accuracy: 15.18%
+Saved intermediate checkpoint to finetune_classifier_epoch{epoch+1}.pth
+[11,    10] loss: 4.393
+[11,    20] loss: 4.376
+[11,    30] loss: 4.396
+[11,    40] loss: 4.427
+[11,    50] loss: 4.379
+[11,    60] loss: 4.456
+[11,    70] loss: 4.386
+[11,    80] loss: 4.392
+[11,    90] loss: 4.376
+[11,   100] loss: 4.330
+[11] Validation loss: 4.477, Accuracy: 14.88%
+[12,    10] loss: 4.379
+[12,    20] loss: 4.369
+[12,    30] loss: 4.388
+[12,    40] loss: 4.475
+[12,    50] loss: 4.396
+[12,    60] loss: 4.363
+[12,    70] loss: 4.372
+[12,    80] loss: 4.411
+[12,    90] loss: 4.359
+[12,   100] loss: 4.408
+[12] Validation loss: 4.468, Accuracy: 15.10%
+[13,    10] loss: 4.365
+[13,    20] loss: 4.303
+[13,    30] loss: 4.371
+[13,    40] loss: 4.426
+[13,    50] loss: 4.345
+[13,    60] loss: 4.383
+[13,    70] loss: 4.381
+[13,    80] loss: 4.341
+[13,    90] loss: 4.390
+[13,   100] loss: 4.377
+[13] Validation loss: 4.458, Accuracy: 15.11%
+[14,    10] loss: 4.304
+[14,    20] loss: 4.400
+[14,    30] loss: 4.353
+[14,    40] loss: 4.388
+[14,    50] loss: 4.395
+[14,    60] loss: 4.322
+[14,    70] loss: 4.415
+[14,    80] loss: 4.411
+[14,    90] loss: 4.397
+[14,   100] loss: 4.398
+[14] Validation loss: 4.482, Accuracy: 14.81%
+[15,    10] loss: 4.371
+[15,    20] loss: 4.415
+[15,    30] loss: 4.336
+[15,    40] loss: 4.451
+[15,    50] loss: 4.409
+[15,    60] loss: 4.409
+[15,    70] loss: 4.331
+[15,    80] loss: 4.367
+[15,    90] loss: 4.330
+[15,   100] loss: 4.358
+[15] Validation loss: 4.448, Accuracy: 15.24%
+[16,    10] loss: 4.370
+[16,    20] loss: 4.410
+[16,    30] loss: 4.381
+[16,    40] loss: 4.462
+[16,    50] loss: 4.368
+[16,    60] loss: 4.368
+[16,    70] loss: 4.364
+[16,    80] loss: 4.332
+[16,    90] loss: 4.338
+[16,   100] loss: 4.390
+[16] Validation loss: 4.464, Accuracy: 15.10%
+[17,    10] loss: 4.363
+[17,    20] loss: 4.379
+[17,    30] loss: 4.323
+[17,    40] loss: 4.379
+[17,    50] loss: 4.399
+[17,    60] loss: 4.377
+[17,    70] loss: 4.370
+[17,    80] loss: 4.346
+[17,    90] loss: 4.398
+[17,   100] loss: 4.407
+[17] Validation loss: 4.451, Accuracy: 15.24%
+[18,    10] loss: 4.363
+[18,    20] loss: 4.502
+[18,    30] loss: 4.386
+[18,    40] loss: 4.362
+[18,    50] loss: 4.343
+[18,    60] loss: 4.387
+[18,    70] loss: 4.355
+[18,    80] loss: 4.355
+[18,    90] loss: 4.393
+[18,   100] loss: 4.425
+[18] Validation loss: 4.470, Accuracy: 15.18%
+[19,    10] loss: 4.366
+[19,    20] loss: 4.324
+[19,    30] loss: 4.388
+[19,    40] loss: 4.339
+[19,    50] loss: 4.424
+[19,    60] loss: 4.416
+[19,    70] loss: 4.394
+[19,    80] loss: 4.390
+[19,    90] loss: 4.358
+[19,   100] loss: 4.376
+[19] Validation loss: 4.462, Accuracy: 15.10%
+[20,    10] loss: 4.368
+[20,    20] loss: 4.376
+[20,    30] loss: 4.356
+[20,    40] loss: 4.378
+[20,    50] loss: 4.390
+[20,    60] loss: 4.372
+[20,    70] loss: 4.371
+[20,    80] loss: 4.379
+[20,    90] loss: 4.358
+[20,   100] loss: 4.369
+[20] Validation loss: 4.437, Accuracy: 15.30%
+Saved intermediate checkpoint to finetune_classifier_epoch{epoch+1}.pth
+[21,    10] loss: 4.337
+[21,    20] loss: 4.333
+[21,    30] loss: 4.339
+[21,    40] loss: 4.331
+[21,    50] loss: 4.420
+[21,    60] loss: 4.333
+[21,    70] loss: 4.407
+[21,    80] loss: 4.444
+[21,    90] loss: 4.379
+[21,   100] loss: 4.385
+[21] Validation loss: 4.456, Accuracy: 15.13%
+[22,    10] loss: 4.370
+[22,    20] loss: 4.353
+[22,    30] loss: 4.349
+[22,    40] loss: 4.358
+[22,    50] loss: 4.363
+[22,    60] loss: 4.441
+[22,    70] loss: 4.344
+[22,    80] loss: 4.347
+[22,    90] loss: 4.351
+[22,   100] loss: 4.345
+[22] Validation loss: 4.451, Accuracy: 15.17%
+[23,    10] loss: 4.375
+[23,    20] loss: 4.349
+[23,    30] loss: 4.431
+[23,    40] loss: 4.330
+[23,    50] loss: 4.360
+[23,    60] loss: 4.361
+[23,    70] loss: 4.368
+[23,    80] loss: 4.367
+[23,    90] loss: 4.400
+[23,   100] loss: 4.380
+[23] Validation loss: 4.451, Accuracy: 15.31%
+[24,    10] loss: 4.301
+[24,    20] loss: 4.365
+[24,    30] loss: 4.401
+[24,    40] loss: 4.400
+[24,    50] loss: 4.357
+[24,    60] loss: 4.346
+[24,    70] loss: 4.289
+[24,    80] loss: 4.425
+[24,    90] loss: 4.408
+[24,   100] loss: 4.365
+[24] Validation loss: 4.445, Accuracy: 15.28%
+[25,    10] loss: 4.346
+[25,    20] loss: 4.362
+[25,    30] loss: 4.379
+[25,    40] loss: 4.464
+[25,    50] loss: 4.463
+[25,    60] loss: 4.376
+[25,    70] loss: 4.360
+[25,    80] loss: 4.309
+[25,    90] loss: 4.344
+[25,   100] loss: 4.331
+[25] Validation loss: 4.440, Accuracy: 15.32%
+[26,    10] loss: 4.366
+[26,    20] loss: 4.328
+[26,    30] loss: 4.378
+[26,    40] loss: 4.368
+[26,    50] loss: 4.326
+[26,    60] loss: 4.348
+[26,    70] loss: 4.393
+[26,    80] loss: 4.374
+[26,    90] loss: 4.376
+[26,   100] loss: 4.402
+[26] Validation loss: 4.448, Accuracy: 15.20%
+[27,    10] loss: 4.379
+[27,    20] loss: 4.314
+[27,    30] loss: 4.431
+[27,    40] loss: 4.334
+[27,    50] loss: 4.396
+[27,    60] loss: 4.409
+[27,    70] loss: 4.351
+[27,    80] loss: 4.341
+[27,    90] loss: 4.431
+[27,   100] loss: 4.363
+[27] Validation loss: 4.451, Accuracy: 15.12%
+[28,    10] loss: 4.428
+[28,    20] loss: 4.415
+[28,    30] loss: 4.372
+[28,    40] loss: 4.397
+[28,    50] loss: 4.321
+[28,    60] loss: 4.323
+[28,    70] loss: 4.396
+[28,    80] loss: 4.350
+[28,    90] loss: 4.423
+[28,   100] loss: 4.433
+[28] Validation loss: 4.442, Accuracy: 15.36%
+[29,    10] loss: 4.364
+[29,    20] loss: 4.383
+[29,    30] loss: 4.379
+[29,    40] loss: 4.360
+[29,    50] loss: 4.342
+[29,    60] loss: 4.411
+[29,    70] loss: 4.322
+[29,    80] loss: 4.326
+[29,    90] loss: 4.365
+[29,   100] loss: 4.305
+[29] Validation loss: 4.447, Accuracy: 15.37%
+[30,    10] loss: 4.316
+[30,    20] loss: 4.325
+[30,    30] loss: 4.329
+[30,    40] loss: 4.441
+[30,    50] loss: 4.397
+[30,    60] loss: 4.345
+[30,    70] loss: 4.356
+[30,    80] loss: 4.340
+[30,    90] loss: 4.419
+[30,   100] loss: 4.345
+[30] Validation loss: 4.441, Accuracy: 15.43%
+Saved intermediate checkpoint to finetune_classifier_epoch{epoch+1}.pth
+[31,    10] loss: 4.311
+[31,    20] loss: 4.420
+[31,    30] loss: 4.401
+[31,    40] loss: 4.405
+[31,    50] loss: 4.357
+[31,    60] loss: 4.354
+[31,    70] loss: 4.342
+[31,    80] loss: 4.337
+[31,    90] loss: 4.371
+[31,   100] loss: 4.358
+[31] Validation loss: 4.439, Accuracy: 15.36%
+[32,    10] loss: 4.376
+[32,    20] loss: 4.381
+[32,    30] loss: 4.355
+[32,    40] loss: 4.350
+[32,    50] loss: 4.367
+[32,    60] loss: 4.369
+[32,    70] loss: 4.370
+[32,    80] loss: 4.354
+[32,    90] loss: 4.415
+[32,   100] loss: 4.313
+[32] Validation loss: 4.449, Accuracy: 15.21%
+[33,    10] loss: 4.350
+[33,    20] loss: 4.405
+[33,    30] loss: 4.339
+[33,    40] loss: 4.361
+[33,    50] loss: 4.380
+[33,    60] loss: 4.365
+[33,    70] loss: 4.368
+[33,    80] loss: 4.345
+[33,    90] loss: 4.361
+[33,   100] loss: 4.359
+[33] Validation loss: 4.451, Accuracy: 15.25%
+[34,    10] loss: 4.350
+[34,    20] loss: 4.373
+[34,    30] loss: 4.378
+[34,    40] loss: 4.370
+[34,    50] loss: 4.365
+[34,    60] loss: 4.400
+[34,    70] loss: 4.332
+[34,    80] loss: 4.340
+[34,    90] loss: 4.380
+[34,   100] loss: 4.341
+[34] Validation loss: 4.436, Accuracy: 15.32%
+[35,    10] loss: 4.383
+[35,    20] loss: 4.387
+[35,    30] loss: 4.284
+[35,    40] loss: 4.404
+[35,    50] loss: 4.395
+[35,    60] loss: 4.373
+[35,    70] loss: 4.296
+[35,    80] loss: 4.313
+[35,    90] loss: 4.390
+[35,   100] loss: 4.309
+[35] Validation loss: 4.433, Accuracy: 15.42%
+[36,    10] loss: 4.348
+[36,    20] loss: 4.400
+[36,    30] loss: 4.387
+[36,    40] loss: 4.426
+[36,    50] loss: 4.348
+[36,    60] loss: 4.348
+[36,    70] loss: 4.384
+[36,    80] loss: 4.325
+[36,    90] loss: 4.394
+[36,   100] loss: 4.362
+[36] Validation loss: 4.443, Accuracy: 15.28%
+[37,    10] loss: 4.334
+[37,    20] loss: 4.388
+[37,    30] loss: 4.378
+[37,    40] loss: 4.327
+[37,    50] loss: 4.394
+[37,    60] loss: 4.374
+[37,    70] loss: 4.372
+[37,    80] loss: 4.350
+[37,    90] loss: 4.324
+[37,   100] loss: 4.301
+[37] Validation loss: 4.434, Accuracy: 15.39%
+[38,    10] loss: 4.325
+[38,    20] loss: 4.334
+[38,    30] loss: 4.381
+[38,    40] loss: 4.346
+[38,    50] loss: 4.338
+[38,    60] loss: 4.334
+[38,    70] loss: 4.384
+[38,    80] loss: 4.355
+[38,    90] loss: 4.386
+[38,   100] loss: 4.356
+[38] Validation loss: 4.440, Accuracy: 15.41%
+[39,    10] loss: 4.343
+[39,    20] loss: 4.377
+[39,    30] loss: 4.330
+[39,    40] loss: 4.379
+[39,    50] loss: 4.352
+[39,    60] loss: 4.340
+[39,    70] loss: 4.378
+[39,    80] loss: 4.323
+[39,    90] loss: 4.367
+[39,   100] loss: 4.335
+[39] Validation loss: 4.434, Accuracy: 15.40%
+[40,    10] loss: 4.372
+[40,    20] loss: 4.421
+[40,    30] loss: 4.330
+[40,    40] loss: 4.327
+[40,    50] loss: 4.335
+[40,    60] loss: 4.301
+[40,    70] loss: 4.324
+[40,    80] loss: 4.351
+[40,    90] loss: 4.369
+[40,   100] loss: 4.335
+[40] Validation loss: 4.442, Accuracy: 15.30%
+Saved intermediate checkpoint to finetune_classifier_epoch{epoch+1}.pth
+Finished Training
+Time elapsed: 1532.1517892470001
