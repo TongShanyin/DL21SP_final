@@ -38,11 +38,12 @@ evalloader = torch.utils.data.DataLoader(evalset, batch_size=192, shuffle=False,
 
 net = torchvision.models.alexnet(pretrained=False)
 net.classifier[6] = torch.nn.Linear(4096, 4)
+net.load_state_dict(torch.load('checkpoints/rotations_aug/rotations_ep_15'))
 net = net.cuda()
 
 criterion = torch.nn.CrossEntropyLoss()
-optimizer = torch.optim.SGD(net.parameters(), lr=0.01, momentum=0.9, weight_decay=5e-4)
-scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[15, 40], gamma=0.1)
+optimizer = torch.optim.SGD(net.parameters(), lr=0.001, momentum=0.9, weight_decay=5e-4)
+scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[15, 30], gamma=0.1)
 
 os.makedirs(args.checkpoint_dir, exist_ok=True)
 
@@ -84,7 +85,7 @@ for epoch in range(100):
         running_accuracy += accuracy
         if i % 10 == 9:    # print every 10 mini-batches
             print('[%d, %5d] loss: %.3f' % (epoch + 1, i + 1, running_loss / 10), flush=True)
-            print('[%d, %5d] ACC: %.3f' % (epoch + 1, i + 1, running_accuracy / 10), flush=True)
+            print('[%d, %5d] ------- ACC: %.3f' % (epoch + 1, i + 1, running_accuracy / 10), flush=True)
             running_loss = 0.0
             running_accuracy =0.0
     

@@ -30,5 +30,11 @@ singularity exec --nv \
 /bin/bash -c "
 source /ext3/env.sh
 conda activate dev
-python train_classifier.py --checkpoint_dir checkpoints --encoder_checkpoint checkpoints/encoder_largerstep_ep_10
+python train_classifier.py --checkpoint_dir checkpoints --encoder_checkpoint checkpoints/simclr_resnet18_start60_sgd2_encoder_ep_10
 "
+#--encoder_checkpoint checkpoints/simclr_resnet18_start50_lr4_encoder_ep_10
+#" # 5%
+#--encoder_checkpoint checkpoints/simclr_lr4_encoder_ep_30
+#"
+#--encoder_checkpoint checkpoints/simclr_resnet18_encoder_ep_50
+#"

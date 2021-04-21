@@ -1,14 +1,13 @@
 #!/bin/bash
 
-#SBATCH --job-name=train_rotations
-#SBATCH --open-mode=append
-#SBATCH --output=logs/train_rotations_sched_%j.out
-#SBATCH --error=logs/train_rotations_sched_%j.err
-#SBATCH --time=20:00:00
 #SBATCH --gres=gpu:1
-#SBATCH --mem=64G
-#SBATCH --nodes=1
-#SBATCH --cpus-per-task=1
+#SBATCH --partition=n1s8-t4-1
+#SBATCH --account=dl06
+#SBATCH --time=05:00:00
+#SBATCH --output=logs/train_rotations_aug_%j.out
+#SBATCH --error=logs/train_rotations_aug_%j.err
+#SBATCH --exclusive
+#SBATCH --requeue 
 
 /share/apps/local/bin/p2pBandwidthLatencyTest > /dev/null 2>&1
 
@@ -31,5 +30,5 @@ singularity exec --nv \
 /bin/bash -c "
 source /ext3/env.sh
 conda activate dev
-python train_rotations.py --checkpoint-dir checkpoints/rotations_sched
+python train_rotations.py --checkpoint-dir checkpoints/rotations_aug_cont
 "
