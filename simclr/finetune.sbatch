@@ -30,7 +30,7 @@ singularity exec --nv \
 /bin/bash -c "
 source /ext3/env.sh
 conda activate dev
-python finetune.py --checkpoint_dir checkpoints/scratch --model_checkpoint checkpoints/classifier_simclr_resnet18_512t01adam4_encoder_epoch20.pth
+python finetune.py --checkpoint_dir checkpoints/scratch --model_checkpoint checkpoints/scratch/classifier_simclr_resnet18_512t01adam4_encoder_epoch30.pth
 "
 #--encoder_checkpoint checkpoints/simclr_resnet18_start50_lr4_encoder_ep_10
 #" # 5%

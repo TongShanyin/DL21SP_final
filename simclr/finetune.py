@@ -63,7 +63,8 @@ print('SimCLR encoder + linear classifier + finetuning')
 
 criterion = nn.CrossEntropyLoss()
 
-optimizer = torch.optim.Adam(net.parameters(), lr=0.001, weight_decay=1e-4)
+optimizer = torch.optim.SGD(net.parameters(), lr=0.0001, momentum=0.9, weight_decay=5e-4)
+scheduler = torch.optim.lr_schedule.MultiStepLR(optimizer, milestones=[10, 20, 30], gamma=0.5)
 
 print('Start Training')
 print('use checkpoint:'+args.model_checkpoint)
@@ -72,7 +73,7 @@ tic = time.perf_counter()
 
 net.train()
 steps = 0
-for epoch in range(30):
+for epoch in range(40):
     net.train()
     running_loss = 0.0
     for i, data in enumerate(trainloader):
@@ -92,6 +93,7 @@ for epoch in range(30):
             print('[%d, %5d] loss: %.3f' % (epoch + 1, i + 1, running_loss / 10))
             running_loss = 0.0
 
+    scheduler.step()
     net.eval()
     correct = 0
     total = 0
@@ -113,8 +115,8 @@ for epoch in range(30):
     print(f"[{epoch+1}] Validation loss: {validation_loss/100:.3f}, Accuracy: {(100 * correct / total):.2f}%")
     if epoch % 10 == 9: # save every 10 epochs
         os.makedirs(args.checkpoint_dir, exist_ok=True)
-        torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, "finetune_classifier_"+args.model_checkpoint[12:]+f"_epoch{epoch+1}.pth"))
-        print("Saved intermediate checkpoint to finetune_classifier_"+args.model_checkpoint[12:]+f"_epoch{epoch+1}.pth")
+        torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, "finetune_classifier_epoch{epoch+1}.pth"))
+        print("Saved intermediate checkpoint to finetune_classifier_epoch{epoch+1}.pth")
 
 
 print('Finished Training')

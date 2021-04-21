@@ -65,7 +65,8 @@ print('SimCLR encoder + linear classifier')
 
 criterion = nn.CrossEntropyLoss()
 
-optimizer = torch.optim.Adam(net.parameters(), lr=0.001, weight_decay=1e-4)
+optimizer = torch.optim.SGD(net.parameters(), lr=0.01, momentum=0.9, weight_decay=5e-4)
+scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[15, 30, 45], gamma=0.5)
 
 print('Start Training')
 print('use checkpoint:'+args.encoder_checkpoint)
@@ -94,6 +95,7 @@ for epoch in range(30):
             print('[%d, %5d] loss: %.3f' % (epoch + 1, i + 1, running_loss / 10))
             running_loss = 0.0
 
+    scheduler.step()
     net.eval()
     correct = 0
     total = 0
