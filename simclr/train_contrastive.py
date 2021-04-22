@@ -18,8 +18,8 @@ parser.add_argument('--checkpoint-dir', type=str)
 parser.add_argument('--checkpoint_net', type=str)
 args = parser.parse_args()
 
-#BATCH_SIZE = 256
-BATCH_SIZE = 512
+BATCH_SIZE = 256
+#BATCH_SIZE = 512
 #BATCH_SIZE = 1024
 #BATCH_SIZE = 2048
 
@@ -35,7 +35,8 @@ NUM_LATENT = 128
 #TEMPERATURE = 1.
 #TEMPERATURE = 0.5
 #TEMPERATURE = 0.3
-TEMPERATURE = 0.1
+#TEMPERATURE = 0.1
+TEMPERATURE = 0.05
 
 net = SimCLR(NUM_FEATURE, NUM_LATENT).cuda()
 
@@ -44,9 +45,9 @@ print('use checkpoint:'+args.checkpoint_net)
 
 criterion = NTXent(BATCH_SIZE, TEMPERATURE).cuda()
 
-optimizer = torch.optim.Adam(net.parameters(), lr=1e-4, weight_decay=1e-4)
-#optimizer = torch.optim.SGD(net.parameters(), lr=1e-3, momentum=0.9, weight_decay=1e-4)
-#scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[10, 20, 30, 40], gamma=0.1)
+#optimizer = torch.optim.Adam(net.parameters(), lr=1e-5, weight_decay=1e-4)
+optimizer = torch.optim.SGD(net.parameters(), lr=1e-2, momentum=0.9, weight_decay=1e-4)
+scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[20, 40, 60, 80], gamma=0.5)
 
 os.makedirs(args.checkpoint_dir, exist_ok=True)
 
@@ -55,7 +56,7 @@ tic = time.perf_counter()
 
 net.train()
 steps = 0
-for epoch in range(50,100):
+for epoch in range(100):
     net.train()
     
 
@@ -80,7 +81,7 @@ for epoch in range(50,100):
     
     tac = time.perf_counter()
     print("Time elapsed: " + str(tac - tic))
-    checkpoint_name = "simclr_resnet18_512t01adam4_"
+    checkpoint_name = "simclr_resnet18_norm_256t005sgd2_"
     torch.save(net.encoder.state_dict(), os.path.join(args.checkpoint_dir, checkpoint_name+"encoder"))
     torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, checkpoint_name+"net"))
     if epoch % 10 == 9:
@@ -89,6 +90,8 @@ for epoch in range(50,100):
         print("Saved intermediate checkpoint to:"+checkpoint_name+f"encoder_ep_{epoch+1}")
         torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, checkpoint_name+f"ep_{epoch+1}"))
         print("Saved intermediate checkpoint to:"+checkpoint_name+f"ep_{epoch+1}")
+
+    scheduler.step()
 
 #    net.eval()
 #    running_eval_loss = 0.0

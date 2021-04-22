@@ -19,13 +19,13 @@ train_transforms = transforms.Compose([
                                     transforms.RandomRotation(25),
                                     #transforms.ColorJitter(hue=.1, saturation=.1, contrast=.1),
                                     transforms.ToTensor(),  # convert PIL to Pytorch Tensor
-                                    #normalize,
+                                    normalize,
                                 ])
          
 validation_transforms = transforms.Compose([
                                     transforms.Resize(size=resize_size),
                                     transforms.ToTensor(),  # convert PIL to Pytorch Tensor
-                                   # normalize,
+                                    normalize,
                                 ])
 
 class Identity(nn.Module):
