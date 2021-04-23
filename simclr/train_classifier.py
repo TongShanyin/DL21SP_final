@@ -75,7 +75,7 @@ tic = time.perf_counter()
 
 net.train()
 steps = 0
-for epoch in range(50):
+for epoch in range(70):
     net.train()
     running_loss = 0.0
     for i, data in enumerate(trainloader):
