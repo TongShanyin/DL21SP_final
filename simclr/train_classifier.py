@@ -9,7 +9,7 @@ import torch.nn.functional as F
 import torchvision
 #from torchvision import datasets, transforms, models
 
-from dataloader import CustomDataset
+from dataloader import CustomDataset, ExtraDataDataset
 from contrastive import Encoder, train_transforms, validation_transforms
 
 parser = argparse.ArgumentParser()
@@ -17,7 +17,8 @@ parser.add_argument('--checkpoint_dir', type=str) # this is where the final chec
 parser.add_argument('--encoder_checkpoint', type=str) # checkpoint for pre-trained simclr encoder
 args = parser.parse_args()
 
-trainset = CustomDataset(root='/dataset', split='train', transform=train_transforms)
+#trainset = CustomDataset(root='/dataset', split='train', transform=train_transforms)
+trainset = ExtraDataDataset(root='/dataset', transform=train_transforms)
 trainloader = torch.utils.data.DataLoader(trainset, batch_size=256, shuffle=True, num_workers=2)
 
 evalset = CustomDataset(root='/dataset', split="val", transform=validation_transforms)
