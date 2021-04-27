@@ -18,9 +18,9 @@ parser.add_argument('--checkpoint-dir', type=str)
 parser.add_argument('--checkpoint_net', type=str)
 args = parser.parse_args()
 
-BATCH_SIZE = 256
+#BATCH_SIZE = 256
 #BATCH_SIZE = 512
-#BATCH_SIZE = 1024
+BATCH_SIZE = 1024
 #BATCH_SIZE = 2048
 
 trainset = ContrastiveDataset(root='/dataset', split="unlabeled", transform=train_transforms)
@@ -29,25 +29,25 @@ trainloader = torch.utils.data.DataLoader(trainset, batch_size=BATCH_SIZE, shuff
 #evalset = ContrastiveDataset(root='/dataset', split="val", transform=validation_transforms)
 #evalloader = torch.utils.data.DataLoader(evalset, batch_size=256, shuffle=False, num_workers=2)
 
-#NUM_FEATURE = 2048 #renet50
-NUM_FEATURE = 512 #resnet18
+NUM_FEATURE = 2048 #renet50
+#NUM_FEATURE = 512 #resnet18
 NUM_LATENT = 128
 #TEMPERATURE = 1.
 #TEMPERATURE = 0.5
 #TEMPERATURE = 0.3
-#TEMPERATURE = 0.1
-TEMPERATURE = 0.05
+TEMPERATURE = 0.1
+#TEMPERATURE = 0.05
 
 net = SimCLR(NUM_FEATURE, NUM_LATENT).cuda()
 
-net.load_state_dict(torch.load(args.checkpoint_net)) # use previous weights
-print('use checkpoint:'+args.checkpoint_net)
+#net.load_state_dict(torch.load(args.checkpoint_net)) # use previous weights
+#print('use checkpoint:'+args.checkpoint_net)
 
 criterion = NTXent(BATCH_SIZE, TEMPERATURE).cuda()
 
 #optimizer = torch.optim.Adam(net.parameters(), lr=1e-5, weight_decay=1e-4)
 optimizer = torch.optim.SGD(net.parameters(), lr=1e-2, momentum=0.9, weight_decay=1e-4)
-scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[20, 40, 60, 80], gamma=0.5)
+scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[20, 40, 60, 80, 100, 120, 140, 160, 180], gamma=0.5)
 
 os.makedirs(args.checkpoint_dir, exist_ok=True)
 
@@ -56,7 +56,7 @@ tic = time.perf_counter()
 
 net.train()
 steps = 0
-for epoch in range(100):
+for epoch in range(200):
     net.train()
     
 
@@ -81,7 +81,7 @@ for epoch in range(100):
     
     tac = time.perf_counter()
     print("Time elapsed: " + str(tac - tic))
-    checkpoint_name = "simclr_resnet18_norm_256t005sgd2_"
+    checkpoint_name = "simclr_resnet50_norm_start_1024t01sgd2_"
     torch.save(net.encoder.state_dict(), os.path.join(args.checkpoint_dir, checkpoint_name+"encoder"))
     torch.save(net.state_dict(), os.path.join(args.checkpoint_dir, checkpoint_name+"net"))
     if epoch % 10 == 9:

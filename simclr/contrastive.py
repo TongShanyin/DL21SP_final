@@ -39,8 +39,8 @@ class Identity(nn.Module):
 class Encoder(nn.Module): # resnet50 after average pooling
     def __init__(self):
         super(Encoder, self).__init__()
-       # self.encoder = torchvision.models.resnet50()
-        self.encoder = torchvision.models.resnet18()
+        self.encoder = torchvision.models.resnet50()
+       # self.encoder = torchvision.models.resnet18()
         self.encoder.fc = Identity()
 
     def forward(self, x):

@@ -17,8 +17,8 @@ parser.add_argument('--checkpoint_dir', type=str) # this is where the final chec
 parser.add_argument('--encoder_checkpoint', type=str) # checkpoint for pre-trained simclr encoder
 args = parser.parse_args()
 
-#trainset = CustomDataset(root='/dataset', split='train', transform=train_transforms)
-trainset = ExtraDataDataset(root='/dataset', transform=train_transforms)
+trainset = CustomDataset(root='/dataset', split='train', transform=train_transforms)
+#trainset = ExtraDataDataset(root='/dataset', transform=train_transforms)
 trainloader = torch.utils.data.DataLoader(trainset, batch_size=256, shuffle=True, num_workers=2)
 
 evalset = CustomDataset(root='/dataset', split="val", transform=validation_transforms)
@@ -50,8 +50,8 @@ class LinearClassifier(torch.nn.Module):
     x = self.linear3(x)
     return x
 
-#NUM_FEATURE = 2048
-NUM_FEATURE = 512
+NUM_FEATURE = 2048
+#NUM_FEATURE = 512
 
 encoder = Encoder()
 encoder.load_state_dict(torch.load(args.encoder_checkpoint))
@@ -67,7 +67,7 @@ print('SimCLR encoder + linear classifier')
 criterion = nn.CrossEntropyLoss()
 
 optimizer = torch.optim.SGD(net.parameters(), lr=0.01, momentum=0.9, weight_decay=5e-4)
-scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[15, 30, 45], gamma=0.5)
+scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer, milestones=[15, 30, 45, 60], gamma=0.5)
 
 print('Start Training')
 print('use checkpoint:'+args.encoder_checkpoint)
