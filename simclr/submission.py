@@ -11,10 +11,13 @@ team_name = "SMC"
 email_address = "ccp5804@nyu.edu"
 
 resize_size=96
+normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                                 std=[0.229, 0.224, 0.225])
+
 validation_transforms = transforms.Compose([
                                     transforms.Resize(size=resize_size),
                                     transforms.ToTensor(),  # convert PIL to Pytorch Tensor
-                                   # normalize,
+                                    normalize,
                                 ])
 
 class Identity(nn.Module):
@@ -27,8 +30,8 @@ class Identity(nn.Module):
 class Encoder(nn.Module): # resnet50 after average pooling
     def __init__(self):
         super(Encoder, self).__init__()
-       # self.encoder = torchvision.models.resnet50()
-        self.encoder = torchvision.models.resnet18()
+        self.encoder = torchvision.models.resnet50()
+       # self.encoder = torchvision.models.resnet18()
         self.encoder.fc = Identity()
 
     def forward(self, x):
@@ -61,7 +64,7 @@ class LinearClassifier(torch.nn.Module):
     x = self.linear3(x)
     return x
 
-NUM_FEATURE = 512
+NUM_FEATURE = 2048
 
 
 def get_model():
