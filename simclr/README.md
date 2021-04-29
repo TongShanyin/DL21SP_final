@@ -14,6 +14,8 @@ accuracy 24%:
 
 	(encoder) simclr_resnet50_norm_start_1024t01sgd1_encoder_ep_70.pth
 	
-accuract 27.7%:
+accuract 27.7%: logs/train_cl_6142459.out
 
 	(encoder) simclr_resnet50_norm_start80_1024t01_sgd5e3_encoder.pth
+	
+	(classifier) 
