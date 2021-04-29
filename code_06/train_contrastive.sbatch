@@ -4,7 +4,7 @@
 #SBATCH --partition=n1s8-t4-1
 #SBATCH --account=dl06
 #SBATCH --time=20:00:00
-#SBATCH --mem=40GB
+#SBATCH --mem=20GB
 #SBATCH --output=logs/train_simclr.out
 #SBATCH --error=logs/train_simclr.err
 #SBATCH --exclusive

@@ -20,7 +20,7 @@ parser.add_argument('--checkpoint-dir', type=str)
 args = parser.parse_args()
 
 
-BATCH_SIZE = 1024
+BATCH_SIZE = 256
 
 trainset = ContrastiveDataset(root='/dataset', split="unlabeled", transform=train_transforms)
 trainloader = torch.utils.data.DataLoader(trainset, batch_size=BATCH_SIZE, shuffle=True, num_workers=2)
