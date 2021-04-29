@@ -18,4 +18,4 @@ accuract 27.7%: logs/train_cl_6142459.out
 
 	(encoder) simclr_resnet50_norm_start80_1024t01_sgd5e3_encoder.pth
 	
-	(classifier) 
+	(classifier) classifier_simclr_resnet50_norm_start80_1024t01_sgd5e3_encoder_epoch60.pth
