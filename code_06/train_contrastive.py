@@ -51,7 +51,7 @@ tic = time.perf_counter()
 
 net.train()
 steps = 0
-for epoch in range(100):
+for epoch in range(200):
     net.train()
     
 
