@@ -1,0 +1,783 @@
+Dataset is copied to /tmp
+SimCLR encoder + linear classifier
+Start Training
+use checkpoint:checkpoints/simclr_resnet50_norm_start80_1024t01_sgd5e3_encoder.pth
+[1,    10] loss: 6.818
+[1,    20] loss: 6.724
+[1,    30] loss: 6.541
+[1,    40] loss: 6.371
+[1,    50] loss: 6.223
+[1,    60] loss: 6.038
+[1,    70] loss: 5.905
+[1,    80] loss: 5.750
+[1,    90] loss: 5.612
+[1,   100] loss: 5.506
+[1] Validation loss: 5.127, Accuracy: 11.39%
+[2,    10] loss: 5.243
+[2,    20] loss: 5.147
+[2,    30] loss: 5.097
+[2,    40] loss: 5.023
+[2,    50] loss: 5.030
+[2,    60] loss: 4.902
+[2,    70] loss: 4.888
+[2,    80] loss: 4.841
+[2,    90] loss: 4.822
+[2,   100] loss: 4.735
+[2] Validation loss: 4.431, Accuracy: 16.52%
+[3,    10] loss: 4.523
+[3,    20] loss: 4.519
+[3,    30] loss: 4.495
+[3,    40] loss: 4.501
+[3,    50] loss: 4.466
+[3,    60] loss: 4.456
+[3,    70] loss: 4.469
+[3,    80] loss: 4.471
+[3,    90] loss: 4.437
+[3,   100] loss: 4.400
+[3] Validation loss: 4.105, Accuracy: 19.16%
+[4,    10] loss: 4.208
+[4,    20] loss: 4.180
+[4,    30] loss: 4.225
+[4,    40] loss: 4.245
+[4,    50] loss: 4.224
+[4,    60] loss: 4.154
+[4,    70] loss: 4.190
+[4,    80] loss: 4.231
+[4,    90] loss: 4.201
+[4,   100] loss: 4.163
+[4] Validation loss: 3.926, Accuracy: 21.17%
+[5,    10] loss: 4.041
+[5,    20] loss: 4.047
+[5,    30] loss: 4.002
+[5,    40] loss: 3.957
+[5,    50] loss: 4.004
+[5,    60] loss: 3.996
+[5,    70] loss: 3.975
+[5,    80] loss: 3.999
+[5,    90] loss: 4.034
+[5,   100] loss: 4.019
+[5] Validation loss: 3.824, Accuracy: 22.24%
+[6,    10] loss: 3.779
+[6,    20] loss: 3.848
+[6,    30] loss: 3.814
+[6,    40] loss: 3.893
+[6,    50] loss: 3.901
+[6,    60] loss: 3.883
+[6,    70] loss: 3.874
+[6,    80] loss: 3.863
+[6,    90] loss: 3.862
+[6,   100] loss: 3.867
+[6] Validation loss: 3.749, Accuracy: 23.09%
+[7,    10] loss: 3.747
+[7,    20] loss: 3.699
+[7,    30] loss: 3.774
+[7,    40] loss: 3.782
+[7,    50] loss: 3.701
+[7,    60] loss: 3.785
+[7,    70] loss: 3.823
+[7,    80] loss: 3.828
+[7,    90] loss: 3.791
+[7,   100] loss: 3.758
+[7] Validation loss: 3.685, Accuracy: 23.80%
+[8,    10] loss: 3.618
+[8,    20] loss: 3.633
+[8,    30] loss: 3.649
+[8,    40] loss: 3.688
+[8,    50] loss: 3.622
+[8,    60] loss: 3.718
+[8,    70] loss: 3.687
+[8,    80] loss: 3.708
+[8,    90] loss: 3.699
+[8,   100] loss: 3.748
+[8] Validation loss: 3.659, Accuracy: 24.28%
+[9,    10] loss: 3.575
+[9,    20] loss: 3.593
+[9,    30] loss: 3.550
+[9,    40] loss: 3.569
+[9,    50] loss: 3.534
+[9,    60] loss: 3.684
+[9,    70] loss: 3.620
+[9,    80] loss: 3.659
+[9,    90] loss: 3.700
+[9,   100] loss: 3.571
+[9] Validation loss: 3.633, Accuracy: 24.67%
+[10,    10] loss: 3.421
+[10,    20] loss: 3.470
+[10,    30] loss: 3.537
+[10,    40] loss: 3.565
+[10,    50] loss: 3.557
+[10,    60] loss: 3.577
+[10,    70] loss: 3.543
+[10,    80] loss: 3.531
+[10,    90] loss: 3.538
+[10,   100] loss: 3.621
+[10] Validation loss: 3.610, Accuracy: 25.20%
+Saved intermediate checkpoint to classifier_simclr_resnet50_norm_start80_1024t01_sgd5e3_encoder_epoch10.pth
+[11,    10] loss: 3.410
+[11,    20] loss: 3.500
+[11,    30] loss: 3.454
+[11,    40] loss: 3.440
+[11,    50] loss: 3.431
+[11,    60] loss: 3.465
+[11,    70] loss: 3.490
+[11,    80] loss: 3.440
+[11,    90] loss: 3.522
+[11,   100] loss: 3.546
+[11] Validation loss: 3.602, Accuracy: 25.27%
+[12,    10] loss: 3.342
+[12,    20] loss: 3.395
+[12,    30] loss: 3.372
+[12,    40] loss: 3.372
+[12,    50] loss: 3.348
+[12,    60] loss: 3.477
+[12,    70] loss: 3.447
+[12,    80] loss: 3.508
+[12,    90] loss: 3.431
+[12,   100] loss: 3.457
+[12] Validation loss: 3.589, Accuracy: 25.54%
+[13,    10] loss: 3.286
+[13,    20] loss: 3.285
+[13,    30] loss: 3.332
+[13,    40] loss: 3.297
+[13,    50] loss: 3.406
+[13,    60] loss: 3.346
+[13,    70] loss: 3.461
+[13,    80] loss: 3.479
+[13,    90] loss: 3.382
+[13,   100] loss: 3.494
+[13] Validation loss: 3.592, Accuracy: 25.32%
+[14,    10] loss: 3.233
+[14,    20] loss: 3.264
+[14,    30] loss: 3.228
+[14,    40] loss: 3.331
+[14,    50] loss: 3.378
+[14,    60] loss: 3.337
+[14,    70] loss: 3.318
+[14,    80] loss: 3.371
+[14,    90] loss: 3.354
+[14,   100] loss: 3.345
+[14] Validation loss: 3.592, Accuracy: 25.88%
+[15,    10] loss: 3.219
+[15,    20] loss: 3.219
+[15,    30] loss: 3.238
+[15,    40] loss: 3.212
+[15,    50] loss: 3.313
+[15,    60] loss: 3.293
+[15,    70] loss: 3.287
+[15,    80] loss: 3.332
+[15,    90] loss: 3.350
+[15,   100] loss: 3.283
+[15] Validation loss: 3.571, Accuracy: 26.08%
+[16,    10] loss: 3.130
+[16,    20] loss: 3.101
+[16,    30] loss: 3.156
+[16,    40] loss: 3.250
+[16,    50] loss: 3.184
+[16,    60] loss: 3.225
+[16,    70] loss: 3.229
+[16,    80] loss: 3.277
+[16,    90] loss: 3.164
+[16,   100] loss: 3.175
+[16] Validation loss: 3.553, Accuracy: 26.50%
+[17,    10] loss: 3.094
+[17,    20] loss: 3.089
+[17,    30] loss: 3.200
+[17,    40] loss: 3.110
+[17,    50] loss: 3.146
+[17,    60] loss: 3.167
+[17,    70] loss: 3.163
+[17,    80] loss: 3.102
+[17,    90] loss: 3.226
+[17,   100] loss: 3.203
+[17] Validation loss: 3.559, Accuracy: 26.41%
+[18,    10] loss: 3.057
+[18,    20] loss: 3.142
+[18,    30] loss: 3.078
+[18,    40] loss: 3.155
+[18,    50] loss: 3.111
+[18,    60] loss: 3.067
+[18,    70] loss: 3.149
+[18,    80] loss: 3.129
+[18,    90] loss: 3.081
+[18,   100] loss: 3.139
+[18] Validation loss: 3.545, Accuracy: 26.63%
+[19,    10] loss: 3.060
+[19,    20] loss: 3.071
+[19,    30] loss: 3.077
+[19,    40] loss: 3.095
+[19,    50] loss: 3.139
+[19,    60] loss: 3.070
+[19,    70] loss: 3.060
+[19,    80] loss: 3.124
+[19,    90] loss: 3.136
+[19,   100] loss: 3.185
+[19] Validation loss: 3.546, Accuracy: 26.58%
+[20,    10] loss: 3.051
+[20,    20] loss: 3.036
+[20,    30] loss: 3.093
+[20,    40] loss: 3.066
+[20,    50] loss: 3.061
+[20,    60] loss: 3.105
+[20,    70] loss: 3.073
+[20,    80] loss: 3.127
+[20,    90] loss: 3.120
+[20,   100] loss: 3.095
+[20] Validation loss: 3.551, Accuracy: 26.64%
+Saved intermediate checkpoint to classifier_simclr_resnet50_norm_start80_1024t01_sgd5e3_encoder_epoch20.pth
+[21,    10] loss: 3.004
+[21,    20] loss: 3.020
+[21,    30] loss: 3.030
+[21,    40] loss: 3.026
+[21,    50] loss: 3.046
+[21,    60] loss: 3.048
+[21,    70] loss: 3.120
+[21,    80] loss: 3.084
+[21,    90] loss: 3.061
+[21,   100] loss: 3.131
+[21] Validation loss: 3.547, Accuracy: 26.79%
+[22,    10] loss: 2.959
+[22,    20] loss: 3.004
+[22,    30] loss: 2.987
+[22,    40] loss: 3.017
+[22,    50] loss: 3.093
+[22,    60] loss: 3.013
+[22,    70] loss: 3.098
+[22,    80] loss: 3.067
+[22,    90] loss: 3.066
+[22,   100] loss: 3.061
+[22] Validation loss: 3.546, Accuracy: 26.97%
+[23,    10] loss: 2.978
+[23,    20] loss: 3.013
+[23,    30] loss: 2.990
+[23,    40] loss: 3.053
+[23,    50] loss: 2.946
+[23,    60] loss: 2.989
+[23,    70] loss: 3.020
+[23,    80] loss: 2.994
+[23,    90] loss: 2.989
+[23,   100] loss: 3.097
+[23] Validation loss: 3.544, Accuracy: 26.99%
+[24,    10] loss: 2.880
+[24,    20] loss: 2.984
+[24,    30] loss: 2.946
+[24,    40] loss: 3.002
+[24,    50] loss: 2.914
+[24,    60] loss: 3.066
+[24,    70] loss: 3.037
+[24,    80] loss: 2.993
+[24,    90] loss: 3.078
+[24,   100] loss: 2.976
+[24] Validation loss: 3.546, Accuracy: 27.15%
+[25,    10] loss: 2.981
+[25,    20] loss: 2.933
+[25,    30] loss: 2.934
+[25,    40] loss: 3.007
+[25,    50] loss: 2.959
+[25,    60] loss: 3.016
+[25,    70] loss: 2.940
+[25,    80] loss: 3.022
+[25,    90] loss: 3.002
+[25,   100] loss: 3.020
+[25] Validation loss: 3.549, Accuracy: 26.89%
+[26,    10] loss: 2.943
+[26,    20] loss: 2.910
+[26,    30] loss: 2.927
+[26,    40] loss: 2.975
+[26,    50] loss: 2.999
+[26,    60] loss: 2.941
+[26,    70] loss: 2.894
+[26,    80] loss: 2.987
+[26,    90] loss: 3.045
+[26,   100] loss: 2.964
+[26] Validation loss: 3.548, Accuracy: 27.16%
+[27,    10] loss: 2.970
+[27,    20] loss: 2.871
+[27,    30] loss: 2.978
+[27,    40] loss: 2.959
+[27,    50] loss: 2.872
+[27,    60] loss: 2.878
+[27,    70] loss: 2.941
+[27,    80] loss: 2.952
+[27,    90] loss: 2.937
+[27,   100] loss: 2.989
+[27] Validation loss: 3.545, Accuracy: 27.18%
+[28,    10] loss: 2.906
+[28,    20] loss: 2.873
+[28,    30] loss: 2.928
+[28,    40] loss: 2.894
+[28,    50] loss: 2.894
+[28,    60] loss: 2.915
+[28,    70] loss: 2.932
+[28,    80] loss: 2.902
+[28,    90] loss: 2.974
+[28,   100] loss: 2.933
+[28] Validation loss: 3.555, Accuracy: 27.11%
+[29,    10] loss: 2.848
+[29,    20] loss: 2.838
+[29,    30] loss: 2.923
+[29,    40] loss: 2.931
+[29,    50] loss: 2.895
+[29,    60] loss: 2.928
+[29,    70] loss: 2.894
+[29,    80] loss: 2.943
+[29,    90] loss: 2.952
+[29,   100] loss: 2.926
+[29] Validation loss: 3.560, Accuracy: 26.97%
+[30,    10] loss: 2.786
+[30,    20] loss: 2.826
+[30,    30] loss: 2.832
+[30,    40] loss: 2.881
+[30,    50] loss: 2.878
+[30,    60] loss: 2.894
+[30,    70] loss: 2.988
+[30,    80] loss: 2.900
+[30,    90] loss: 2.934
+[30,   100] loss: 2.902
+[30] Validation loss: 3.549, Accuracy: 27.24%
+Saved intermediate checkpoint to classifier_simclr_resnet50_norm_start80_1024t01_sgd5e3_encoder_epoch30.pth
+[31,    10] loss: 2.847
+[31,    20] loss: 2.793
+[31,    30] loss: 2.855
+[31,    40] loss: 2.839
+[31,    50] loss: 2.864
+[31,    60] loss: 2.801
+[31,    70] loss: 2.855
+[31,    80] loss: 2.807
+[31,    90] loss: 2.904
+[31,   100] loss: 2.848
+[31] Validation loss: 3.564, Accuracy: 27.09%
+[32,    10] loss: 2.806
+[32,    20] loss: 2.800
+[32,    30] loss: 2.842
+[32,    40] loss: 2.818
+[32,    50] loss: 2.766
+[32,    60] loss: 2.812
+[32,    70] loss: 2.783
+[32,    80] loss: 2.920
+[32,    90] loss: 2.884
+[32,   100] loss: 2.864
+[32] Validation loss: 3.547, Accuracy: 27.43%
+[33,    10] loss: 2.781
+[33,    20] loss: 2.742
+[33,    30] loss: 2.799
+[33,    40] loss: 2.851
+[33,    50] loss: 2.882
+[33,    60] loss: 2.818
+[33,    70] loss: 2.834
+[33,    80] loss: 2.799
+[33,    90] loss: 2.845
+[33,   100] loss: 2.863
+[33] Validation loss: 3.546, Accuracy: 27.29%
+[34,    10] loss: 2.818
+[34,    20] loss: 2.737
+[34,    30] loss: 2.861
+[34,    40] loss: 2.810
+[34,    50] loss: 2.811
+[34,    60] loss: 2.728
+[34,    70] loss: 2.851
+[34,    80] loss: 2.799
+[34,    90] loss: 2.820
+[34,   100] loss: 2.903
+[34] Validation loss: 3.551, Accuracy: 27.34%
+[35,    10] loss: 2.744
+[35,    20] loss: 2.745
+[35,    30] loss: 2.777
+[35,    40] loss: 2.716
+[35,    50] loss: 2.871
+[35,    60] loss: 2.879
+[35,    70] loss: 2.843
+[35,    80] loss: 2.852
+[35,    90] loss: 2.815
+[35,   100] loss: 2.768
+[35] Validation loss: 3.552, Accuracy: 27.39%
+[36,    10] loss: 2.781
+[36,    20] loss: 2.712
+[36,    30] loss: 2.796
+[36,    40] loss: 2.772
+[36,    50] loss: 2.783
+[36,    60] loss: 2.823
+[36,    70] loss: 2.808
+[36,    80] loss: 2.843
+[36,    90] loss: 2.845
+[36,   100] loss: 2.854
+[36] Validation loss: 3.551, Accuracy: 27.38%
+[37,    10] loss: 2.777
+[37,    20] loss: 2.772
+[37,    30] loss: 2.758
+[37,    40] loss: 2.735
+[37,    50] loss: 2.771
+[37,    60] loss: 2.811
+[37,    70] loss: 2.823
+[37,    80] loss: 2.814
+[37,    90] loss: 2.799
+[37,   100] loss: 2.711
+[37] Validation loss: 3.556, Accuracy: 27.52%
+[38,    10] loss: 2.709
+[38,    20] loss: 2.709
+[38,    30] loss: 2.831
+[38,    40] loss: 2.718
+[38,    50] loss: 2.776
+[38,    60] loss: 2.751
+[38,    70] loss: 2.777
+[38,    80] loss: 2.774
+[38,    90] loss: 2.814
+[38,   100] loss: 2.760
+[38] Validation loss: 3.546, Accuracy: 27.53%
+[39,    10] loss: 2.773
+[39,    20] loss: 2.689
+[39,    30] loss: 2.764
+[39,    40] loss: 2.798
+[39,    50] loss: 2.704
+[39,    60] loss: 2.753
+[39,    70] loss: 2.726
+[39,    80] loss: 2.807
+[39,    90] loss: 2.763
+[39,   100] loss: 2.831
+[39] Validation loss: 3.560, Accuracy: 27.24%
+[40,    10] loss: 2.671
+[40,    20] loss: 2.788
+[40,    30] loss: 2.705
+[40,    40] loss: 2.755
+[40,    50] loss: 2.674
+[40,    60] loss: 2.732
+[40,    70] loss: 2.732
+[40,    80] loss: 2.743
+[40,    90] loss: 2.751
+[40,   100] loss: 2.708
+[40] Validation loss: 3.557, Accuracy: 27.21%
+Saved intermediate checkpoint to classifier_simclr_resnet50_norm_start80_1024t01_sgd5e3_encoder_epoch40.pth
+[41,    10] loss: 2.708
+[41,    20] loss: 2.719
+[41,    30] loss: 2.703
+[41,    40] loss: 2.750
+[41,    50] loss: 2.721
+[41,    60] loss: 2.773
+[41,    70] loss: 2.724
+[41,    80] loss: 2.750
+[41,    90] loss: 2.743
+[41,   100] loss: 2.765
+[41] Validation loss: 3.556, Accuracy: 27.46%
+[42,    10] loss: 2.711
+[42,    20] loss: 2.719
+[42,    30] loss: 2.727
+[42,    40] loss: 2.730
+[42,    50] loss: 2.731
+[42,    60] loss: 2.768
+[42,    70] loss: 2.725
+[42,    80] loss: 2.760
+[42,    90] loss: 2.713
+[42,   100] loss: 2.702
+[42] Validation loss: 3.561, Accuracy: 27.38%
+[43,    10] loss: 2.752
+[43,    20] loss: 2.704
+[43,    30] loss: 2.725
+[43,    40] loss: 2.680
+[43,    50] loss: 2.704
+[43,    60] loss: 2.679
+[43,    70] loss: 2.701
+[43,    80] loss: 2.780
+[43,    90] loss: 2.722
+[43,   100] loss: 2.748
+[43] Validation loss: 3.558, Accuracy: 27.40%
+[44,    10] loss: 2.659
+[44,    20] loss: 2.613
+[44,    30] loss: 2.709
+[44,    40] loss: 2.687
+[44,    50] loss: 2.761
+[44,    60] loss: 2.732
+[44,    70] loss: 2.745
+[44,    80] loss: 2.681
+[44,    90] loss: 2.735
+[44,   100] loss: 2.711
+[44] Validation loss: 3.558, Accuracy: 27.41%
+[45,    10] loss: 2.739
+[45,    20] loss: 2.654
+[45,    30] loss: 2.655
+[45,    40] loss: 2.654
+[45,    50] loss: 2.701
+[45,    60] loss: 2.707
+[45,    70] loss: 2.759
+[45,    80] loss: 2.758
+[45,    90] loss: 2.689
+[45,   100] loss: 2.689
+[45] Validation loss: 3.552, Accuracy: 27.52%
+[46,    10] loss: 2.615
+[46,    20] loss: 2.688
+[46,    30] loss: 2.668
+[46,    40] loss: 2.674
+[46,    50] loss: 2.772
+[46,    60] loss: 2.699
+[46,    70] loss: 2.701
+[46,    80] loss: 2.660
+[46,    90] loss: 2.687
+[46,   100] loss: 2.709
+[46] Validation loss: 3.557, Accuracy: 27.49%
+[47,    10] loss: 2.642
+[47,    20] loss: 2.685
+[47,    30] loss: 2.620
+[47,    40] loss: 2.619
+[47,    50] loss: 2.682
+[47,    60] loss: 2.645
+[47,    70] loss: 2.692
+[47,    80] loss: 2.675
+[47,    90] loss: 2.738
+[47,   100] loss: 2.724
+[47] Validation loss: 3.554, Accuracy: 27.46%
+[48,    10] loss: 2.645
+[48,    20] loss: 2.672
+[48,    30] loss: 2.650
+[48,    40] loss: 2.584
+[48,    50] loss: 2.711
+[48,    60] loss: 2.734
+[48,    70] loss: 2.647
+[48,    80] loss: 2.709
+[48,    90] loss: 2.665
+[48,   100] loss: 2.651
+[48] Validation loss: 3.561, Accuracy: 27.38%
+[49,    10] loss: 2.639
+[49,    20] loss: 2.712
+[49,    30] loss: 2.664
+[49,    40] loss: 2.654
+[49,    50] loss: 2.683
+[49,    60] loss: 2.637
+[49,    70] loss: 2.625
+[49,    80] loss: 2.674
+[49,    90] loss: 2.676
+[49,   100] loss: 2.611
+[49] Validation loss: 3.554, Accuracy: 27.59%
+[50,    10] loss: 2.645
+[50,    20] loss: 2.688
+[50,    30] loss: 2.656
+[50,    40] loss: 2.634
+[50,    50] loss: 2.675
+[50,    60] loss: 2.649
+[50,    70] loss: 2.707
+[50,    80] loss: 2.654
+[50,    90] loss: 2.689
+[50,   100] loss: 2.697
+[50] Validation loss: 3.565, Accuracy: 27.50%
+Saved intermediate checkpoint to classifier_simclr_resnet50_norm_start80_1024t01_sgd5e3_encoder_epoch50.pth
+[51,    10] loss: 2.637
+[51,    20] loss: 2.718
+[51,    30] loss: 2.628
+[51,    40] loss: 2.619
+[51,    50] loss: 2.686
+[51,    60] loss: 2.680
+[51,    70] loss: 2.644
+[51,    80] loss: 2.684
+[51,    90] loss: 2.661
+[51,   100] loss: 2.600
+[51] Validation loss: 3.566, Accuracy: 27.57%
+[52,    10] loss: 2.698
+[52,    20] loss: 2.621
+[52,    30] loss: 2.660
+[52,    40] loss: 2.619
+[52,    50] loss: 2.655
+[52,    60] loss: 2.631
+[52,    70] loss: 2.664
+[52,    80] loss: 2.692
+[52,    90] loss: 2.643
+[52,   100] loss: 2.713
+[52] Validation loss: 3.557, Accuracy: 27.68%
+[53,    10] loss: 2.628
+[53,    20] loss: 2.577
+[53,    30] loss: 2.638
+[53,    40] loss: 2.629
+[53,    50] loss: 2.619
+[53,    60] loss: 2.723
+[53,    70] loss: 2.688
+[53,    80] loss: 2.693
+[53,    90] loss: 2.640
+[53,   100] loss: 2.625
+[53] Validation loss: 3.560, Accuracy: 27.57%
+[54,    10] loss: 2.709
+[54,    20] loss: 2.625
+[54,    30] loss: 2.646
+[54,    40] loss: 2.675
+[54,    50] loss: 2.646
+[54,    60] loss: 2.574
+[54,    70] loss: 2.643
+[54,    80] loss: 2.596
+[54,    90] loss: 2.647
+[54,   100] loss: 2.619
+[54] Validation loss: 3.562, Accuracy: 27.57%
+[55,    10] loss: 2.628
+[55,    20] loss: 2.668
+[55,    30] loss: 2.642
+[55,    40] loss: 2.589
+[55,    50] loss: 2.563
+[55,    60] loss: 2.603
+[55,    70] loss: 2.605
+[55,    80] loss: 2.598
+[55,    90] loss: 2.676
+[55,   100] loss: 2.640
+[55] Validation loss: 3.572, Accuracy: 27.39%
+[56,    10] loss: 2.681
+[56,    20] loss: 2.594
+[56,    30] loss: 2.566
+[56,    40] loss: 2.598
+[56,    50] loss: 2.628
+[56,    60] loss: 2.536
+[56,    70] loss: 2.638
+[56,    80] loss: 2.606
+[56,    90] loss: 2.646
+[56,   100] loss: 2.681
+[56] Validation loss: 3.559, Accuracy: 27.68%
+[57,    10] loss: 2.582
+[57,    20] loss: 2.600
+[57,    30] loss: 2.655
+[57,    40] loss: 2.575
+[57,    50] loss: 2.591
+[57,    60] loss: 2.625
+[57,    70] loss: 2.653
+[57,    80] loss: 2.642
+[57,    90] loss: 2.628
+[57,   100] loss: 2.619
+[57] Validation loss: 3.560, Accuracy: 27.59%
+[58,    10] loss: 2.569
+[58,    20] loss: 2.596
+[58,    30] loss: 2.661
+[58,    40] loss: 2.605
+[58,    50] loss: 2.614
+[58,    60] loss: 2.618
+[58,    70] loss: 2.659
+[58,    80] loss: 2.651
+[58,    90] loss: 2.605
+[58,   100] loss: 2.575
+[58] Validation loss: 3.569, Accuracy: 27.53%
+[59,    10] loss: 2.593
+[59,    20] loss: 2.653
+[59,    30] loss: 2.585
+[59,    40] loss: 2.607
+[59,    50] loss: 2.578
+[59,    60] loss: 2.647
+[59,    70] loss: 2.673
+[59,    80] loss: 2.582
+[59,    90] loss: 2.622
+[59,   100] loss: 2.612
+[59] Validation loss: 3.565, Accuracy: 27.57%
+[60,    10] loss: 2.610
+[60,    20] loss: 2.601
+[60,    30] loss: 2.637
+[60,    40] loss: 2.569
+[60,    50] loss: 2.649
+[60,    60] loss: 2.603
+[60,    70] loss: 2.602
+[60,    80] loss: 2.612
+[60,    90] loss: 2.607
+[60,   100] loss: 2.611
+[60] Validation loss: 3.561, Accuracy: 27.71%
+Saved intermediate checkpoint to classifier_simclr_resnet50_norm_start80_1024t01_sgd5e3_encoder_epoch60.pth
+[61,    10] loss: 2.647
+[61,    20] loss: 2.521
+[61,    30] loss: 2.575
+[61,    40] loss: 2.590
+[61,    50] loss: 2.600
+[61,    60] loss: 2.592
+[61,    70] loss: 2.571
+[61,    80] loss: 2.527
+[61,    90] loss: 2.579
+[61,   100] loss: 2.637
+[61] Validation loss: 3.561, Accuracy: 27.77%
+[62,    10] loss: 2.552
+[62,    20] loss: 2.620
+[62,    30] loss: 2.600
+[62,    40] loss: 2.584
+[62,    50] loss: 2.625
+[62,    60] loss: 2.571
+[62,    70] loss: 2.600
+[62,    80] loss: 2.640
+[62,    90] loss: 2.665
+[62,   100] loss: 2.592
+[62] Validation loss: 3.566, Accuracy: 27.61%
+[63,    10] loss: 2.536
+[63,    20] loss: 2.647
+[63,    30] loss: 2.638
+[63,    40] loss: 2.652
+[63,    50] loss: 2.550
+[63,    60] loss: 2.554
+[63,    70] loss: 2.575
+[63,    80] loss: 2.663
+[63,    90] loss: 2.581
+[63,   100] loss: 2.554
+[63] Validation loss: 3.572, Accuracy: 27.55%
+[64,    10] loss: 2.535
+[64,    20] loss: 2.555
+[64,    30] loss: 2.552
+[64,    40] loss: 2.622
+[64,    50] loss: 2.562
+[64,    60] loss: 2.551
+[64,    70] loss: 2.659
+[64,    80] loss: 2.570
+[64,    90] loss: 2.599
+[64,   100] loss: 2.585
+[64] Validation loss: 3.557, Accuracy: 27.74%
+[65,    10] loss: 2.542
+[65,    20] loss: 2.598
+[65,    30] loss: 2.607
+[65,    40] loss: 2.631
+[65,    50] loss: 2.602
+[65,    60] loss: 2.586
+[65,    70] loss: 2.582
+[65,    80] loss: 2.580
+[65,    90] loss: 2.567
+[65,   100] loss: 2.609
+[65] Validation loss: 3.563, Accuracy: 27.85%
+[66,    10] loss: 2.564
+[66,    20] loss: 2.584
+[66,    30] loss: 2.555
+[66,    40] loss: 2.629
+[66,    50] loss: 2.591
+[66,    60] loss: 2.645
+[66,    70] loss: 2.563
+[66,    80] loss: 2.579
+[66,    90] loss: 2.555
+[66,   100] loss: 2.525
+[66] Validation loss: 3.572, Accuracy: 27.62%
+[67,    10] loss: 2.580
+[67,    20] loss: 2.545
+[67,    30] loss: 2.657
+[67,    40] loss: 2.595
+[67,    50] loss: 2.651
+[67,    60] loss: 2.503
+[67,    70] loss: 2.582
+[67,    80] loss: 2.594
+[67,    90] loss: 2.551
+[67,   100] loss: 2.553
+[67] Validation loss: 3.563, Accuracy: 27.82%
+[68,    10] loss: 2.537
+[68,    20] loss: 2.552
+[68,    30] loss: 2.595
+[68,    40] loss: 2.547
+[68,    50] loss: 2.570
+[68,    60] loss: 2.618
+[68,    70] loss: 2.544
+[68,    80] loss: 2.599
+[68,    90] loss: 2.597
+[68,   100] loss: 2.578
+[68] Validation loss: 3.560, Accuracy: 27.73%
+[69,    10] loss: 2.576
+[69,    20] loss: 2.527
+[69,    30] loss: 2.559
+[69,    40] loss: 2.612
+[69,    50] loss: 2.591
+[69,    60] loss: 2.611
+[69,    70] loss: 2.562
+[69,    80] loss: 2.580
+[69,    90] loss: 2.530
+[69,   100] loss: 2.618
+[69] Validation loss: 3.562, Accuracy: 27.73%
+[70,    10] loss: 2.486
+[70,    20] loss: 2.632
+[70,    30] loss: 2.528
+[70,    40] loss: 2.586
+[70,    50] loss: 2.575
+[70,    60] loss: 2.650
+[70,    70] loss: 2.581
+[70,    80] loss: 2.592
+[70,    90] loss: 2.581
+[70,   100] loss: 2.568
+[70] Validation loss: 3.575, Accuracy: 27.67%
+Saved intermediate checkpoint to classifier_simclr_resnet50_norm_start80_1024t01_sgd5e3_encoder_epoch70.pth
+Finished Training
+Time elapsed: 3110.145158369094
