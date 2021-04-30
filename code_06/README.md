@@ -14,6 +14,6 @@
 
 	And then use sbatch train_contrastive.sbatch to continue training. If we want to use larger batchsize like BATCH_SIZE = 1024, we need to train in Greene directly.
 
-* Train the linear classfier (connected with the fronzen encoder from last step) using labeled data. 
+* Train the linear classfier (connected with the fronzen encoder from last step) using labeled data.  train_classifier.sbatch launches the training code in train_classifier.py.  Commenting/uncommenting lines 20 and 21 switch between training with extra data and without it.  We train for 300 epochs and choose the checkpoint with the best validation accuracy.  For us, that was epoch 49 without extra data and epoch 67 with extra data.
 
-* Fine-tuning the whole model using the labeled data.
+* Fine-tuning the whole model using the labeled data.  This requires plugging the classifier checkpoint into finetune.sbatch, which launches the finetuning script finetune.py.  Again, switching the value for trainset is used to add or remove extra data.  Our best results are at epoch 52 without extra data and epoch 76 with extra data.
